@@ -11,7 +11,7 @@ public class Menu {
         String menuList = "Select from the menu below:\n\n1. Construct a Circle\n" +
                 "2. Construct a Rectangle\n3. Construct a Square\n4. Construct a Triangle\n" +
                 "5. Construct a Sphere\n6. Construct a Cube\n7. Construct a Cone\n8. " +
-                "Construct a Cylinder\n9. Construct a Torus\n10. Exit the program\n\n";
+                "Construct a Cylinder\n9. Construct a Torus\n10. Exit the program\n";
 
         System.out.println("*********Welcome to the Java OO Shapes Program **********");
         System.out.println("Author: Tyler D Clark");
@@ -72,13 +72,14 @@ public class Menu {
         System.out.println("Sorry I do not understand. Enter Y or N");
         return goOn(scan);
     }
-    
+
     private static int getNumberSelection(Scanner scan){
         int choice;
         try {
             choice = scan.nextInt();
         } catch (InputMismatchException exception){
             System.out.println("Bad choice!");
+            scan.next(); //consume bad token
             return getNumberSelection(scan);
         }
         if (choice > 0){
