@@ -1,2 +1,32 @@
-package dev.tylerdclark.two_dimensional;public class Square {
+/*
+ * *****************************************************************************
+ * NAME: Tyler D Clark
+ * PROJECT: Project 1
+ * COURSE: CMSC 335
+ * DATE: 27 OCT 2020
+ * *****************************************************************************
+ */
+
+package dev.tylerdclark.two_dimensional;
+
+public class Square extends TwoDimensionalShape{
+    private final int side;
+
+    /**
+     * Constructor method to initialize side length field and calculate {@link #area()}. Keeping in mind that all sides
+     * of a square are the same, so only one length is needed.
+     * @param side the length of the sides
+     */
+    public Square(int side) {
+        this.side = side;
+    }
+
+    /**
+     * Uses the formula s^2 to calculate the area of the square.
+     * @return the calculated area of this square
+     */
+    @Override
+    public double area() {
+        return side * side;
+    }
 }
