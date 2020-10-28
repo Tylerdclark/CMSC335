@@ -21,6 +21,9 @@ public class Rectangle extends TwoDimensionalShape{
     public Rectangle(int width, int height){
         this.width = width;
         this.height = height;
+        if (height == width) {
+            System.out.println("Psst! that was a square!");
+        }
     }
 
     /**
@@ -31,5 +34,5 @@ public class Rectangle extends TwoDimensionalShape{
     public double area() {
         return width * height;
     }
-    
+
 }
