@@ -3,18 +3,16 @@ package dev.tylerdclark;
 import dev.tylerdclark.three_dimensional.*;
 import dev.tylerdclark.two_dimensional.*;
 
-import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+
     public Menu() {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("*********Welcome to the Java OO Shapes Program **********");
         System.out.println("Author: Tyler D Clark");
-        Scanner scan = new Scanner(System.in);
 
         do {
             System.out.println("Select from the menu below:\n\n1. Construct a Circle\n" + "2. Construct a Rectangle\n3. "
