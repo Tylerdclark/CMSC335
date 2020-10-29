@@ -13,7 +13,7 @@ public class Triangle extends TwoDimensionalShape{
     private final int base, height;
 
     /**
-     * onstructor method to initialize base and height fields and calculate {@link #area()}
+     * Constructor method to initialize base and height fields and calculate {@link #area()}
      * @param base length of the base of the triangle
      * @param height length of the height of the triangle
      */
