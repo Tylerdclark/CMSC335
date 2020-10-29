@@ -22,5 +22,5 @@ public abstract class ThreeDimensionalShape extends Shape {
     * To be implemented with the volume formula specific to each shape.
     * @return the result from the calculation of volume
     */
-   public abstract float volume();
+   public abstract double volume();
 }

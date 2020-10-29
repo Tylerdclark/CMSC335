@@ -1,0 +1,24 @@
+package dev.tylerdclark.three_dimensional;
+
+public class Torus extends ThreeDimensionalShape{
+    private final int innerRadius, outerRadius;
+
+    /**
+     * Creates a torus object which can call the {@link #volume()} method to calculate volume
+     * @param innerRadius radius inside the torus shape
+     * @param outerRadius distance from the center of the hole to the center of the inner shape
+     */
+    public Torus(int innerRadius, int outerRadius) {
+        this.innerRadius = innerRadius;
+        this.outerRadius = outerRadius;
+    }
+
+    /**
+     * Uses the formula 2 * pi^2 * R * r^2 to calculate volume
+     * @return calculated volume of this torus
+     */
+    @Override
+    public double volume() {
+        return 2 * Math.pow(Math.PI, 2) * outerRadius * Math.pow(innerRadius, 2);
+    }
+}
