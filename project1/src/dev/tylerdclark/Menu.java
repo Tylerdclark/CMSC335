@@ -1,3 +1,12 @@
+/*
+ * *****************************************************************************
+ * NAME: Tyler D Clark
+ * PROJECT: Project 1
+ * COURSE: CMSC 335
+ * DATE: 25 OCT 2020
+ * *****************************************************************************
+ */
+
 package dev.tylerdclark;
 
 import dev.tylerdclark.three_dimensional.*;
@@ -6,74 +15,72 @@ import dev.tylerdclark.two_dimensional.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Driver class of the project.
+ */
 public class Menu {
-
+    /**
+     * Creates a menu instances which continually loops and prompts the user to
+     * create shape objects. The loop can be exited using {@link #goOn(Scanner)} and
+     * collects number input using {@link #getNumber(Scanner)}.
+     */
     public Menu() {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("*********Welcome to the Java OO Shapes Program **********");
-        System.out.println("Author: Tyler D Clark");
 
         do {
-            System.out.println("Select from the menu below:\n\n1. Construct a Circle\n" + "2. Construct a Rectangle\n3. "
-                    + "Construct a Square\n4. Construct a Triangle\n" + "5. Construct a Sphere\n6. Construct a Cube\n7. "
-                    + "Construct a Cone\n8. " + "Construct a Cylinder\n9. Construct a Torus\n10. Exit the program\n");
+            System.out.println("Select from the menu below:\n\n1. Construct a Circle\n"
+                    + "2. Construct a Rectangle\n3. " + "Construct a Square\n4. Construct a Triangle\n"
+                    + "5. Construct a Sphere\n6. Construct a Cube\n7. " + "Construct a Cone\n8. "
+                    + "Construct a Cylinder\n9. Construct a Torus\n10. Exit the program");
 
             switch (getNumber(scan)) {
                 case 1:
                     System.out.println("You have selected a Circle\nWhat is the radius?");
-                    Circle circle = new Circle(getNumber(scan));
-                    System.out.format("The area of the Circle is %.1f%n", circle.area());
+                    System.out.println(new Circle(getNumber(scan))); // calling the toString method
                     break;
                 case 2:
-                    System.out.println("You have selected a Rectangle\nWhat is the width");
+                    System.out.println("You have selected a Rectangle\nWhat is the width?");
                     int rectangleWidth = getNumber(scan);
                     System.out.println("and what is the height?");
-                    Rectangle rectangle = new Rectangle(rectangleWidth, getNumber(scan));
-                    System.out.format("The area of the Rectangle is %.1f%n", rectangle.area());
+                    System.out.println(new Rectangle(rectangleWidth, getNumber(scan)));
                     break;
                 case 3:
                     System.out.println("You have selected a Square\nWhat length are the sides?");
-                    Square square = new Square(getNumber(scan));
-                    System.out.format("The area of the Square is %.1f%n", square.area());
+                    System.out.println(new Square(getNumber(scan)));
                     break;
                 case 4:
                     System.out.println("You have selected a Triangle\nWhat is the base?");
                     int triangleBase = getNumber(scan);
                     System.out.println("and what is the height?");
-                    Triangle triangle = new Triangle(triangleBase, getNumber(scan));
-                    System.out.format("The area of the Triangle is %.1f%n", triangle.area());
+                    System.out.println(new Triangle(triangleBase, getNumber(scan)));
                     break;
                 case 5:
                     System.out.println("You have selected a Sphere\nWhat is the radius?");
-                    Sphere sphere = new Sphere(getNumber(scan));
-                    System.out.format("The Volume of the Sphere is %.1f%n", sphere.volume());
+                    System.out.println(new Sphere(getNumber(scan)));
                     break;
                 case 6:
                     System.out.println("You have selected a Cube\nWhat is the length of the side?");
-                    Cube cube = new Cube(getNumber(scan));
-                    System.out.format("The Volume of the Cube is %.1f%n", cube.volume());
+                    System.out.println(new Cube(getNumber(scan)));
                     break;
                 case 7:
                     System.out.println("You have selected a Cone\nWhat is the radius of the base?");
                     int coneBaseRadius = getNumber(scan);
                     System.out.println("and what is the height?");
-                    Cone cone = new Cone(coneBaseRadius, getNumber(scan));
-                    System.out.format("The Volume of the Cone is %.1f%n", cone.volume());
+                    System.out.println(new Cone(coneBaseRadius, getNumber(scan)));
                     break;
                 case 8:
                     System.out.println("You have selected a Cylinder\nWhat is the radius of the base?");
                     int cylinderRadius = getNumber(scan);
                     System.out.println("and what is the height?");
-                    Cylinder cylinder = new Cylinder(cylinderRadius, getNumber(scan));
-                    System.out.format("The Volume of the Cylinder is %.1f%n", cylinder.volume());
+                    System.out.println(new Cylinder(cylinderRadius, getNumber(scan)));
                     break;
                 case 9:
                     System.out.println("You have selected a Torus\nWhat is the inner radius?");
                     int torusInnerRadius = getNumber(scan);
                     System.out.println("and what is the outer radius?");
-                    Torus torus = new Torus(torusInnerRadius, getNumber(scan));
-                    System.out.format("The Volume of the Torus is %.1f%n", torus.volume());
+                    System.out.println(new Torus(torusInnerRadius, getNumber(scan)));
                     break;
                 case 10: // One of two ways to exit loop
                     scan.close();
@@ -87,9 +94,19 @@ public class Menu {
         scan.close();
     }
 
+    /**
+     * Determines if the user wishes to continue. By accepting a scanner as an
+     * argument, the overhead of creating a new one with every method call is
+     * avoided and works better with the recursive incorrect input handling of this
+     * method.
+     *
+     * @param scan scanner passed to collect input
+     * @return true if the user wishes to continue or false otherwise
+     */
     private static boolean goOn(Scanner scan) {
         System.out.println("Would you like to continue? (Y or N)");
-        char choice = scan.next().charAt(0);
+        char choice = Character.toLowerCase(scan.next().charAt(0));
+
         if (choice == 'y') {
             return true;
         }
@@ -100,19 +117,27 @@ public class Menu {
         return goOn(scan);
     }
 
+    /**
+     * Retrieves a positive integer from user input. By passing the Scanner as
+     * parameter, the method can recursively error handle and persistently request a
+     * number with the same scanner.
+     *
+     * @param scan scanner passed to collect input
+     * @return a positive integer
+     */
     private static int getNumber(Scanner scan) {
         int choice;
         try {
             choice = scan.nextInt();
         } catch (InputMismatchException exception) {
-            System.out.println("Bad choice!");
+            System.out.println("Bad choice! Please use Integers.");
             scan.next(); // consume bad token
             return getNumber(scan);
         }
         if (choice > 0) { // Let's just avoid the abstract maths...
             return choice;
         } else {
-            System.out.println("Bad choice!");
+            System.out.println("Bad choice! Please keep values positive.");
             return getNumber(scan);
         }
     }
