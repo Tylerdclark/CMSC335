@@ -8,15 +8,21 @@
  */
 package dev.tylerdclark.three_dimensional;
 
-public class Cone extends ThreeDimensionalShape{
+/**
+ * This class has a constructor that allows cone objects to use
+ * {@link #volume()} method to calculate the area based on the
+ * {@link #baseRadius} and {@link #height} passed as arguments.
+ */
+public class Cone extends ThreeDimensionalShape {
 
     private final int baseRadius, height;
 
     /**
-     * Constructor to create cone objects which can call {@link #volume()} to calculate
-     * volume
+     * Constructor to create cone objects which can call {@link #volume()} to
+     * calculate volume
+     * 
      * @param baseRadius distance from the center of the base to the edge
-     * @param height how tall the cone is to be
+     * @param height     how tall the cone is to be
      */
     public Cone(int baseRadius, int height) {
 
@@ -26,6 +32,7 @@ public class Cone extends ThreeDimensionalShape{
 
     /**
      * Uses the formula pi * r^2 * h / 3 to calculate the volume of a cone
+     * 
      * @return The calculate volume based on this cone.
      */
     @Override
