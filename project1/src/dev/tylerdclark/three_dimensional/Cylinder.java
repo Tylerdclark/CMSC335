@@ -1,3 +1,12 @@
+/*
+ * *****************************************************************************
+ * FILE: Cylinder.java
+ * NAME: Tyler D Clark
+ * PROJECT: Project 1
+ * COURSE: CMSC 335
+ * DATE: 28 OCT 2020
+ * *****************************************************************************
+ */
 package dev.tylerdclark.three_dimensional;
 
 /**
