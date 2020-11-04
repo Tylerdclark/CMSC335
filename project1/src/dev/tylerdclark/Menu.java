@@ -1,5 +1,6 @@
 /*
  * *****************************************************************************
+ * FILE: Menu.java
  * NAME: Tyler D Clark
  * PROJECT: Project 1
  * COURSE: CMSC 335
@@ -12,6 +13,9 @@ package dev.tylerdclark;
 import dev.tylerdclark.three_dimensional.*;
 import dev.tylerdclark.two_dimensional.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -21,7 +25,7 @@ import java.util.Scanner;
 public class Menu {
     /**
      * Creates a menu instances which continually loops and prompts the user to
-     * create shape objects. The loop can be exited using {@link #goOn(Scanner)} and
+     * create shape objects. The loop can be exited using {@link #goOnCheck(Scanner)} and
      * collects number input using {@link #getNumber(Scanner)}.
      */
     public Menu() {
@@ -83,6 +87,7 @@ public class Menu {
                     System.out.println(new Torus(torusInnerRadius, getNumber(scan)));
                     break;
                 case 10: // One of two ways to exit loop
+                    endPrompt();
                     scan.close();
                     System.exit(0);
                     break;
@@ -90,7 +95,8 @@ public class Menu {
                     System.out.println("Not a possible menu choice!");
                     break;
             }
-        } while (goOn(scan)); // Second way to exit loop
+        } while (goOnCheck(scan)); // Second way to exit loop
+        endPrompt();
         scan.close();
     }
 
@@ -103,7 +109,7 @@ public class Menu {
      * @param scan scanner passed to collect input
      * @return true if the user wishes to continue or false otherwise
      */
-    private static boolean goOn(Scanner scan) {
+    private static boolean goOnCheck(Scanner scan) {
         System.out.println("Would you like to continue? (Y or N)");
         char choice = Character.toLowerCase(scan.next().charAt(0));
 
@@ -114,7 +120,7 @@ public class Menu {
             return false;
         }
         System.out.println("Sorry I do not understand. Enter Y or N");
-        return goOn(scan);
+        return goOnCheck(scan);
     }
 
     /**
@@ -140,5 +146,14 @@ public class Menu {
             System.out.println("Bad choice! Please keep values positive.");
             return getNumber(scan);
         }
+    }
+
+    /**
+     * Thanks the user and prints the date and time.
+     */
+    private static void endPrompt() { //Nov 11 at 1:40 PM.
+        DateFormat dateFormat = new SimpleDateFormat("MMM d 'at' h:mm a");
+        Date date = new Date();
+        System.out.println("Thank you for using the program. Today is "+ dateFormat.format(date));
     }
 }
