@@ -72,7 +72,7 @@ The following sections will test the program's functionality
 To test the basic 2d shapes, menu options 1 through 4 will be selected. For testing of object creation, simple integers will be passed. The area output will be compared against the actual area.
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Circle | 10 | A=πr2=π·10·2≈314.15927 | 314.2 |
 
 Screenshot:
@@ -80,7 +80,7 @@ Screenshot:
 ![circle test](doc/img/ss2.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Rectangle | 4, 25 | A=wl=4·25=100 | 100.0 |
 
 Screenshot:
@@ -88,7 +88,7 @@ Screenshot:
 ![rectangle test](doc/img/ss3.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Square | 3 | A=s^2=3^2=9 | 9.0 |
 
 Screenshot:
@@ -96,7 +96,7 @@ Screenshot:
 ![square test](doc/img/ss4.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Triangle | 3, 4 | A=h·b/2=3·4/2=6 | 6.0 |
 
 Screenshot:
@@ -108,7 +108,7 @@ Screenshot:
 Options 5 through 9 will be used for 3d shapes. Similar to before, ints will be passed as it is the design of the program. Output of the volume will be compared against the actual volume.
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Sphere | 5 | V=4/3·π·r^3=4/3·π·5^3≈523.59878 | 523.6 |
 
 Screenshot:
@@ -116,7 +116,7 @@ Screenshot:
 ![sphere test](doc/img/ss6.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Cube | 3 | V=a^3=3^3=27 | 27.0 |
 
 Screenshot:
@@ -124,7 +124,7 @@ Screenshot:
 ![cube test](doc/img/ss7.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Cone | 5, 10 | V=π·r^2·h/3=π·5^2·10/3≈261.79939 | 261.8 |
 
 Screenshot:
@@ -132,7 +132,7 @@ Screenshot:
 ![cone test](doc/img/ss8.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Cylinder | 3, 6 | V=π·r^2·h=π·3^2·6≈169.646 | 169.6 |
 
 Screenshot:
@@ -140,7 +140,7 @@ Screenshot:
 ![cylinder test](doc/img/ss9.png)
 
 |  Shape | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Torus | 2, 10 | V=(π·r^2)·(2·π·R)=(π·2^2)·(2·π·10)≈789.56835 | 789.6 |
 
 Screenshot:
@@ -152,7 +152,7 @@ Screenshot:
 This section tests the other aspects of the program, incorrect input handling, and exit program.
 
 |  Test Description | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Incorrect menu option | 11 | error handling | "Not a possible menu choice!" |
 | Incorrect menu option | a | error handling | "Bad choice! Please use Integers." |
 
@@ -161,7 +161,7 @@ Screenshot:
 ![menu test](doc/img/ss11.png)
 
 |  Test Description | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Non-integer input in shape creation | three | error handling | "Bad choice! Please use Integers." |
 | Non-integer input in shape creation | 3.3 | error handling | "Bad choice! Please use Integers." |
 
@@ -170,7 +170,7 @@ Screenshot:
 ![shape test](doc/img/ss12.png)
 
 |  Test Description | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Uppercase Y to continuation prompt | Y | Program continues | Program continues |
 
 (lowercase has been used in previous examples)
@@ -180,7 +180,7 @@ Screenshot:
 ![continue test](doc/img/ss13.png)
 
 |  Test Description | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | Option 10 from menu| 10 | Thanks user, displays date and time info and program exits | "Thank you for using the program. Today is Nov 3 at 4:50 PM" |
 
 Screenshot:
@@ -188,7 +188,7 @@ Screenshot:
 ![exit test](doc/img/ss14.png)
 
 |  Test Description | Input  | Expected Output  | Actual Output  |
-|---|---|---|---|---|
+|---|---|---|---|
 | 'n' to continuation prompt | n | Thanks user, displays date and time info and program exits | "Thank you for using the program. Today is Nov 3 at 4:50 PM" |
 
 Screenshot:
