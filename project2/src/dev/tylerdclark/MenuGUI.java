@@ -4,14 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MenuGUI extends JFrame {
-    JComboBox<Shape> shapeJComboBox;
+    String[] shapeList = new String[]{"Circle", "Rectangle", "Square", "Triangle", "Cone", "Cube", "Cylinder", "Sphere", "Torus"};
 
     public MenuGUI(String title) {
         super(title);
-
+        JComboBox<String> shapeJComboBox = new JComboBox<>(shapeList);
         JPanel introPanel = new JPanel();
-        introPanel.add(new JLabel("Please select a shape from the dropdown:"));
+        JButton submitButton = new JButton("Submit");
 
+        introPanel.add(new JLabel("Please select a shape from the dropdown:"));
+        introPanel.add(shapeJComboBox);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(introPanel);
