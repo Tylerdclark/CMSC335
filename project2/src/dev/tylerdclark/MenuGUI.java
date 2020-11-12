@@ -1,23 +1,41 @@
 package dev.tylerdclark;
 
+import dev.tylerdclark.three_dimensional.*;
+import dev.tylerdclark.two_dimensional.Circle;
+import dev.tylerdclark.two_dimensional.Rectangle;
+import dev.tylerdclark.two_dimensional.Square;
+import dev.tylerdclark.two_dimensional.Triangle;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+
+
 
 public class MenuGUI extends JFrame {
-    String[] shapeList = new String[]{"Circle", "Rectangle", "Square", "Triangle", "Cone", "Cube", "Cylinder", "Sphere", "Torus"};
+
+    Shape[] shapeList = new Shape[]{
+            new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
+            new Cube(), new Cylinder(), new Sphere(), new Torus() };
 
     public MenuGUI(String title) {
         super(title);
-        JComboBox<String> shapeJComboBox = new JComboBox<>(shapeList);
+        JComboBox<Shape> shapeJComboBox = new JComboBox<>(shapeList);
         JPanel introPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
-        shapeJComboBox.addItemListener(e -> {
-            System.out.println(e.getItem());
+        shapeJComboBox.setSelectedIndex(-1);
+        shapeJComboBox.addItemListener( (event) -> {
+
+            if (event.getStateChange() == ItemEvent.SELECTED){
+                Shape item = (Shape) event.getItem();
+                String[] itemSpecifications = item.getSpecifications();
+                for (String spec: itemSpecifications) {
+                    System.out.println(spec);
+                }
+                System.out.println(item);
+
+            }
         });
 
 
@@ -38,11 +56,5 @@ public class MenuGUI extends JFrame {
         for (Component component: components) {
             panel.add(component);
         }
-    }
-    private Object getShapeObject(String className, Object ctorArgument) throws NoSuchMethodException, ClassNotFoundException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Class<?> clazz = Class.forName(className);
-        Constructor<?> ctor = clazz.getConstructor(String.class);
-
-        return ctor.newInstance(ctorArgument);
     }
 }
