@@ -15,4 +15,19 @@ package dev.tylerdclark;
  * since it is designed to be subclassed. It implicitly extends {@link Object}.
  */
 public abstract class Shape {
+
+    /**
+     * Used to properly display the required fields of each shape object
+     * @return an array of required fields for shape creation
+     */
+    public abstract String[] getSpecifications();
+
+    /**
+     * Prints the name of the class
+     * @return String name of the class
+     */
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }
