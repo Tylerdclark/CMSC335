@@ -27,8 +27,4 @@ public abstract class ThreeDimensionalShape extends Shape {
     */
    public abstract double volume();
 
-   @Override
-   public String toString() {
-      return String.format("The volume of the %s is %.1f.", getClass().getSimpleName(), volume());
-   }
 }

@@ -25,9 +25,4 @@ public abstract class TwoDimensionalShape extends Shape {
      * @return the result from the calculation of area
      */
     public abstract double area();
-
-    @Override
-    public String toString() {
-        return String.format("The area of the %s is %.1f.", getClass().getSimpleName(), area());
-    }
 }
