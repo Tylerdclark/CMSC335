@@ -17,7 +17,7 @@ package dev.tylerdclark.two_dimensional;
  */
 public class Triangle extends TwoDimensionalShape {
 
-    private final int base, height;
+    private int base, height;
 
     /**
      * Constructor method to initialize base and height fields and calculate
@@ -31,6 +31,10 @@ public class Triangle extends TwoDimensionalShape {
         this.height = height;
     }
 
+    public Triangle() {
+
+    }
+
     /**
      * Using the formula: b * h / 2 to calculate the area
      * 
@@ -39,5 +43,10 @@ public class Triangle extends TwoDimensionalShape {
     @Override
     public double area() {
         return (base * height) / 2.0d;
+    }
+
+    @Override
+    public String[] getSpecifications() {
+        return new String[0];
     }
 }

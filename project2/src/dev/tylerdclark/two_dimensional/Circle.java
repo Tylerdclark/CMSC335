@@ -16,8 +16,9 @@ package dev.tylerdclark.two_dimensional;
  */
 public class Circle extends TwoDimensionalShape {
 
-    private final int radius;
+    private int radius;
 
+    public Circle(){};
     /**
      * Constructor method to initialize radius field and calculate {@link #area()}
      * 
@@ -38,4 +39,8 @@ public class Circle extends TwoDimensionalShape {
         return Math.PI * Math.pow(radius, 2);
     }
 
+    @Override
+    public String[] getSpecifications() {
+        return new String[] {"Radius"};
+    }
 }

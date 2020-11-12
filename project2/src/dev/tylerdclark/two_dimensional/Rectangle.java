@@ -17,7 +17,7 @@ package dev.tylerdclark.two_dimensional;
  */
 public class Rectangle extends TwoDimensionalShape {
 
-    private final int width, height;
+    private int width, height;
 
     /**
      * Constructor method to initialize width and height fields and calculate
@@ -34,6 +34,10 @@ public class Rectangle extends TwoDimensionalShape {
         }
     }
 
+    public Rectangle() {
+
+    }
+
     /**
      * Uses the formula w * h to calculate the area of this rectangle
      * 
@@ -44,4 +48,13 @@ public class Rectangle extends TwoDimensionalShape {
         return width * height;
     }
 
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[]{"Width", "Height"};
+    }
 }

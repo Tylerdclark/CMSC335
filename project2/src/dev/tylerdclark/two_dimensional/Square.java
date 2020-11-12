@@ -17,7 +17,7 @@ package dev.tylerdclark.two_dimensional;
  */
 public class Square extends TwoDimensionalShape {
 
-    private final int side;
+    private int side;
 
     /**
      * Constructor method to initialize side length field and calculate
@@ -30,6 +30,10 @@ public class Square extends TwoDimensionalShape {
         this.side = side;
     }
 
+    public Square() {
+
+    }
+
     /**
      * Uses the formula s^2 to calculate the area of the square.
      * 
@@ -38,5 +42,15 @@ public class Square extends TwoDimensionalShape {
     @Override
     public double area() {
         return side * side;
+    }
+
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[] {"Sides"};
     }
 }
