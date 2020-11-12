@@ -16,7 +16,7 @@ package dev.tylerdclark.three_dimensional;
  */
 public class Cone extends ThreeDimensionalShape {
 
-    private final int baseRadius, height;
+    private int baseRadius, height;
 
     /**
      * Constructor to create cone objects which can call {@link #volume()} to
@@ -31,6 +31,10 @@ public class Cone extends ThreeDimensionalShape {
         this.height = height;
     }
 
+    public Cone() {
+
+    }
+
     /**
      * Uses the formula pi * r^2 * h / 3 to calculate the volume of a cone
      * 
@@ -39,5 +43,15 @@ public class Cone extends ThreeDimensionalShape {
     @Override
     public double volume() {
         return Math.PI * Math.pow(baseRadius, 2) * height / 3;
+    }
+
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[]{"Base Radius", "Height"};
     }
 }

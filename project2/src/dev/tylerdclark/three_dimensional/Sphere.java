@@ -16,7 +16,7 @@ package dev.tylerdclark.three_dimensional;
  */
 public class Sphere extends ThreeDimensionalShape {
 
-    private final int radius;
+    private int radius;
 
     /**
      * Constructor to create Sphere objects which can call {@link #volume()} to
@@ -30,6 +30,10 @@ public class Sphere extends ThreeDimensionalShape {
         this.radius = radius;
     }
 
+    public Sphere() {
+
+    }
+
     /**
      * Uses the formula 4/3 * pi * r^3 to calculate the volume of a sphere
      * 
@@ -38,5 +42,15 @@ public class Sphere extends ThreeDimensionalShape {
     @Override
     public double volume() {
         return 4.0d / 3.0d * Math.PI * Math.pow(radius, 3);
+    }
+
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[]{"Radius"};
     }
 }

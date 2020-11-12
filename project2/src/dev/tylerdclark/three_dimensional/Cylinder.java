@@ -16,7 +16,7 @@ package dev.tylerdclark.three_dimensional;
  */
 public class Cylinder extends ThreeDimensionalShape {
 
-    private final int radius, height;
+    private int radius, height;
 
     /**
      * Creates a cylinder object that can call {@link #volume()} method to calculate
@@ -30,6 +30,10 @@ public class Cylinder extends ThreeDimensionalShape {
         this.height = height;
     }
 
+    public Cylinder() {
+
+    }
+
     /**
      * Calculates the volume of the cylinder using the formula: pi * r^2 * h
      * 
@@ -38,5 +42,15 @@ public class Cylinder extends ThreeDimensionalShape {
     @Override
     public double volume() {
         return Math.PI * Math.pow(radius, 2) * height;
+    }
+
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[]{"Radius", "Height"};
     }
 }

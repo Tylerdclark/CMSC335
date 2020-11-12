@@ -16,7 +16,7 @@ package dev.tylerdclark.three_dimensional;
  */
 public class Cube extends ThreeDimensionalShape {
 
-    private final int edge;
+    private int edge;
 
     /**
      * Constructor to create cube objects which can call {@link #volume()} to
@@ -30,6 +30,10 @@ public class Cube extends ThreeDimensionalShape {
         this.edge = edge;
     }
 
+    public Cube() {
+
+    }
+
     /**
      * Uses the formula edge^3 to calculate the volume of a cube
      * 
@@ -38,5 +42,15 @@ public class Cube extends ThreeDimensionalShape {
     @Override
     public double volume() {
         return Math.pow(edge, 3);
+    }
+
+    /**
+     * Used to properly display the required fields of each shape object
+     *
+     * @return an array of required fields for shape creation
+     */
+    @Override
+    public String[] getSpecifications() {
+        return new String[]{"Edge"};
     }
 }
