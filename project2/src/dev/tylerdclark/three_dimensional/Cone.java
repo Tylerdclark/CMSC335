@@ -32,7 +32,6 @@ public class Cone extends ThreeDimensionalShape {
     }
 
     public Cone() {
-
     }
 
     /**
@@ -52,6 +51,6 @@ public class Cone extends ThreeDimensionalShape {
      */
     @Override
     public String[] getSpecifications() {
-        return new String[]{"Base Radius", "Height"};
+        return new String[]{"Radius", "Height"};
     }
 }
