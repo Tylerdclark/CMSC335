@@ -47,6 +47,6 @@ public class Triangle extends TwoDimensionalShape {
 
     @Override
     public String[] getSpecifications() {
-        return new String[0];
+        return new String[]{"Base", "Height"};
     }
 }
