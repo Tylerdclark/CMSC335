@@ -10,34 +10,41 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 
-
-
 public class MenuGUI extends JFrame {
 
-    Shape[] shapeList = new Shape[]{
-            new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
+    Shape[] shapeList = new Shape[] { new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
             new Cube(), new Cylinder(), new Sphere(), new Torus() };
+            
+    JPanel panel = new JPanel();
 
     public MenuGUI(String title) {
         super(title);
+        this.setSize(400, 200);
         JComboBox<Shape> shapeJComboBox = new JComboBox<>(shapeList);
         JPanel introPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
         shapeJComboBox.setSelectedIndex(-1);
-        shapeJComboBox.addItemListener( (event) -> {
+        shapeJComboBox.addItemListener((event) -> {
 
-            if (event.getStateChange() == ItemEvent.SELECTED){
+            if (event.getStateChange() == ItemEvent.SELECTED) {
+
                 Shape item = (Shape) event.getItem();
                 String[] itemSpecifications = item.getSpecifications();
-                for (String spec: itemSpecifications) {
-                    System.out.println(spec);
+
+                panel = new JPanel(new GridLayout(1, itemSpecifications.length));
+
+                for (String spec : itemSpecifications) {
+                    panel.add(new JLabel(spec));
+                    panel.add(new JTextField());
+
                 }
                 System.out.println(item);
+                introPanel.add(panel);
+                introPanel.updateUI();
 
             }
         });
-
 
         submitButton.addActionListener((event) -> {
             System.out.println(shapeJComboBox.getSelectedItem());
@@ -49,12 +56,6 @@ public class MenuGUI extends JFrame {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(introPanel);
-        this.pack();
-    }
-
-    private static void addComponents(Panel panel, Component[] components){
-        for (Component component: components) {
-            panel.add(component);
-        }
+        // this.pack();
     }
 }
