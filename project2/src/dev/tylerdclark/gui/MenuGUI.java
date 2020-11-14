@@ -1,26 +1,33 @@
-package dev.tylerdclark;
+package dev.tylerdclark.gui;
 
+import dev.tylerdclark.Shape;
 import dev.tylerdclark.three_dimensional.*;
-import dev.tylerdclark.two_dimensional.Circle;
-import dev.tylerdclark.two_dimensional.Rectangle;
-import dev.tylerdclark.two_dimensional.Square;
-import dev.tylerdclark.two_dimensional.Triangle;
+import dev.tylerdclark.two_dimensional.*;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+
+
+/*
+todo: have an error message show when incorrect information is given. Have it show below the specifications
+todo: redraw after the error is remedied
+ */
+
 
 public class MenuGUI extends JFrame {
 
-    Shape[] shapeList = new Shape[] { new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
+    dev.tylerdclark.Shape[] shapeList = new dev.tylerdclark.Shape[] { new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
             new Cube(), new Cylinder(), new Sphere(), new Torus() };
             
-    JPanel panel = new JPanel();
+    ArrayList<JPanel> panels = new ArrayList<>();
+    Shape currentShape;
 
     public MenuGUI(String title) {
         super(title);
-        this.setSize(400, 200);
-        JComboBox<Shape> shapeJComboBox = new JComboBox<>(shapeList);
+        this.setSize(400, 100);
+        this.setLocationRelativeTo(null);
+        JComboBox<dev.tylerdclark.Shape> shapeJComboBox = new JComboBox<>(shapeList);
         JPanel introPanel = new JPanel();
         JButton submitButton = new JButton("Submit");
 
@@ -28,34 +35,36 @@ public class MenuGUI extends JFrame {
         shapeJComboBox.addItemListener((event) -> {
 
             if (event.getStateChange() == ItemEvent.SELECTED) {
-
-                Shape item = (Shape) event.getItem();
-                String[] itemSpecifications = item.getSpecifications();
-
-                panel = new JPanel(new GridLayout(1, itemSpecifications.length));
-
-                for (String spec : itemSpecifications) {
-                    panel.add(new JLabel(spec));
-                    panel.add(new JTextField());
-
+                for (JPanel p: panels) {
+                    introPanel.remove(p);
                 }
-                System.out.println(item);
-                introPanel.add(panel);
-                introPanel.updateUI();
+                panels.clear();
+                introPanel.revalidate();
+                currentShape = (Shape) event.getItem();
+                String[] itemSpecifications = currentShape.getSpecifications();
+
+                panels.add(new SpecificationPanel(itemSpecifications));
+
+                for (JPanel p: panels) {
+                    introPanel.add(p);
+                }
+                introPanel.add(submitButton);
 
             }
         });
 
         submitButton.addActionListener((event) -> {
             System.out.println(shapeJComboBox.getSelectedItem());
+            DrawFrame drawFrame = new DrawFrame(currentShape);
+            drawFrame.setVisible(true);
         });
 
         introPanel.add(new JLabel("Please select a shape from the dropdown:"));
         introPanel.add(shapeJComboBox);
-        introPanel.add(submitButton);
+
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(introPanel);
-        // this.pack();
+        this.setVisible(true);
     }
 }
