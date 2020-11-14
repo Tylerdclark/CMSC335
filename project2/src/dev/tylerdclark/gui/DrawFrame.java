@@ -4,11 +4,10 @@ import dev.tylerdclark.Shape;
 
 import javax.swing.*;
 
-public class DrawPane extends JFrame {
-    public DrawPane(Shape currentShape) {
+public class DrawFrame extends JFrame {
+    public DrawFrame(Shape currentShape) {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(400, 400);
-
-        this.add(new JLabel("Heeeeelllllllllloooo!"/*currentShape.toString()*/));
+        this.add(new JLabel(currentShape.toString()));
     }
 }
