@@ -6,6 +6,7 @@ import dev.tylerdclark.two_dimensional.*;
 
 import javax.swing.*;
 import java.awt.event.ItemEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -20,7 +21,7 @@ public class MenuGUI extends JFrame {
     dev.tylerdclark.Shape[] shapeList = new dev.tylerdclark.Shape[] { new Circle(), new Rectangle(), new Square(), new Triangle(), new Cone(),
             new Cube(), new Cylinder(), new Sphere(), new Torus() };
             
-    ArrayList<JPanel> panels = new ArrayList<>();
+    ArrayList<SpecificationPanel> panels = new ArrayList<>();
     Shape currentShape;
 
     public MenuGUI(String title) {
@@ -54,8 +55,26 @@ public class MenuGUI extends JFrame {
         });
 
         submitButton.addActionListener((event) -> {
-            System.out.println(shapeJComboBox.getSelectedItem());
+
             DrawFrame drawFrame = new DrawFrame(currentShape);
+
+            try {
+                ArrayList<Integer> values = new ArrayList<>();
+
+                panels.forEach( panel ->
+                        panel.getTextFields().forEach(text ->
+                                values.add(Integer.parseInt(text.getText()))
+                        )
+                );
+
+
+                currentShape.passValues(values);
+                values.forEach(System.out::println);
+                drawFrame.drawShape();
+
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             drawFrame.setVisible(true);
         });
 
