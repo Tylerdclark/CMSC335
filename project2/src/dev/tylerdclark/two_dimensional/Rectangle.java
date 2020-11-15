@@ -10,6 +10,11 @@
 
 package dev.tylerdclark.two_dimensional;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * This class has a constructor that allows Rectangle objects to use
  * {@link #area()} method to calculate the area based on the {@link #width} and
@@ -22,17 +27,7 @@ public class Rectangle extends TwoDimensionalShape {
     /**
      * Constructor method to initialize width and height fields and calculate
      * {@link #area()}
-     * 
-     * @param width  How wide the rectangle is to be
-     * @param height How tall the rectangle is to be
      */
-    public Rectangle(int width, int height) {
-        this.width = width;
-        this.height = height;
-        if (height == width) {
-            System.out.println("Psst! that was a square!");
-        }
-    }
 
     public Rectangle() {
 
@@ -56,5 +51,33 @@ public class Rectangle extends TwoDimensionalShape {
     @Override
     public String[] getSpecifications() {
         return new String[]{"Width", "Height"};
+    }
+
+    /**
+     * Returns a JPanel containing a drawn shape based on the data passed to the object.
+     *
+     * @return returns a JPanel containing the shape
+     */
+    @Override
+    public JPanel getShape() throws IOException {
+
+        return new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawRect(0,0,width, height);
+            }
+        };
+    }
+
+    /**
+     * Passes values to the objects in a way that shapes with varying parameter counts can implement.
+     *
+     * @param values an arraylist of integers. First index is the first initialized data member and so on.
+     */
+    @Override
+    public void passValues(ArrayList<Integer> values) {
+        this.width = values.get(0);
+        this.height = values.get(1);
     }
 }

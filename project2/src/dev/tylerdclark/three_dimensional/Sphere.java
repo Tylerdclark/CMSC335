@@ -9,6 +9,14 @@
  */
 package dev.tylerdclark.three_dimensional;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * This class has a constructor that allows sphere objects to use
  * {@link #volume()} method to calculate the area based on the {@link #radius}
@@ -21,17 +29,8 @@ public class Sphere extends ThreeDimensionalShape {
     /**
      * Constructor to create Sphere objects which can call {@link #volume()} to
      * calculate volume.
-     * 
-     * @param radius the distance from the center of sphere to any point on the
-     *               surface
      */
-    public Sphere(int radius) {
-
-        this.radius = radius;
-    }
-
     public Sphere() {
-
     }
 
     /**
@@ -52,5 +51,34 @@ public class Sphere extends ThreeDimensionalShape {
     @Override
     public String[] getSpecifications() {
         return new String[]{"Radius"};
+    }
+
+    /**
+     * Returns a JPanel containing a drawn shape based on the data passed to the object.
+     *
+     * @return returns a JPanel containing the shape
+     */
+    @Override
+    public JPanel getShape() throws IOException {
+        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/sphere.jpg"));
+        Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
+
+        return new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(reScaledImage, 0, 0, null);
+            }
+        };
+    }
+
+    /**
+     * Passes values to the objects in a way that shapes with varying parameter counts can implement.
+     *
+     * @param values an arraylist of integers. First index is the first initialized data member and so on.
+     */
+    @Override
+    public void passValues(ArrayList<Integer> values) {
+        this.radius = values.get(0);
     }
 }

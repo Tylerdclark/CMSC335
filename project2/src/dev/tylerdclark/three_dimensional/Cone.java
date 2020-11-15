@@ -9,6 +9,14 @@
  */
 package dev.tylerdclark.three_dimensional;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
 /**
  * This class has a constructor that allows cone objects to use
  * {@link #volume()} method to calculate the area based on the
@@ -21,16 +29,7 @@ public class Cone extends ThreeDimensionalShape {
     /**
      * Constructor to create cone objects which can call {@link #volume()} to
      * calculate volume
-     * 
-     * @param baseRadius distance from the center of the base to the edge
-     * @param height     how tall the cone is to be
      */
-    public Cone(int baseRadius, int height) {
-
-        this.baseRadius = baseRadius;
-        this.height = height;
-    }
-
     public Cone() {
     }
 
@@ -52,5 +51,40 @@ public class Cone extends ThreeDimensionalShape {
     @Override
     public String[] getSpecifications() {
         return new String[]{"Radius", "Height"};
+    }
+
+    /**
+     * Returns a JPanel containing a drawn shape based on the data passed to the object.
+     *
+     * @return returns a JPanel containing the shape
+     */
+    @Override
+    public JPanel getShape() throws IOException {
+        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/cone.jpg"));
+        Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
+
+        return new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                int margin = 10;
+                Dimension dim = getSize();
+                super.paintComponent(g);
+
+
+                g.drawImage(reScaledImage, 0, 0, null);
+                g.drawString("Volume: "+volume(), 0,315);
+            }
+        };
+    }
+
+    /**
+     * Passes values to the objects in a way that shapes with varying parameter counts can implement.
+     * @param values an arraylist of integers. First index is the first initialized data member and so on.
+     */
+    @Override
+    public void passValues(ArrayList<Integer> values) {
+        this.baseRadius = values.get(0);
+        this.height = values.get(1);
+
     }
 }

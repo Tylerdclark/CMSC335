@@ -12,6 +12,8 @@ package dev.tylerdclark.three_dimensional;
 
 import dev.tylerdclark.Shape;
 
+import javax.swing.*;
+
 /**
  * Class to be extended by Sphere, Cube, Cone, Cylinder, and Torus. Made
  * abstract as no instantiations of this class will be needed and implementation
