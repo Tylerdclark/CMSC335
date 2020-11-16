@@ -5,6 +5,6 @@ import dev.tylerdclark.gui.MenuGUI;
 public class Main {
 
     public static void main(String[] args) {
-        new MenuGUI("Project 2");
+        new MenuGUI();
     }
 }
