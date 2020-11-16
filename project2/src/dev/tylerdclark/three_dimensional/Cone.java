@@ -66,13 +66,13 @@ public class Cone extends ThreeDimensionalShape {
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                int margin = 10;
-                Dimension dim = getSize();
                 super.paintComponent(g);
-
-
-                g.drawImage(reScaledImage, 0, 0, null);
-                g.drawString("Volume: "+volume(), 0,315);
+                //centering with fast maffs
+                int imageX = (this.getWidth() - reScaledImage.getWidth(null)  )/2;
+                int imageY = (this.getHeight() - reScaledImage.getHeight(null))/2;
+                g.drawImage(reScaledImage, imageX, imageY, null);
+                int stringY = imageY + reScaledImage.getHeight(null) + 15;
+                g.drawString(String.format("The Volume of your shape is : %.2f", volume()), imageX ,stringY);
             }
         };
     }

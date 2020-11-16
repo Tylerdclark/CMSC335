@@ -55,18 +55,26 @@ public class Circle extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape() throws IOException {
+    public JPanel getShape(){
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                int margin = 10;
-                Dimension dim = getSize();
                 super.paintComponent(g);
-                g.drawOval(0, 0, 100, 100);
+
+                String stats = String.format("The Area of your shape is : %.2f", area());
+                FontMetrics metrics = g.getFontMetrics();
+
+                int circleX = (this.getWidth() - radius)/2;
+                int circleY = (this.getHeight() - radius )/2;
+                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
+                int stringY = circleY + radius + 15;
+
+                g.drawOval(circleX, circleY , radius, radius);
+                g.drawString(stats, stringX ,stringY);
+
             }
         };
     }
-
     /**
      * Passes values to the objects in a way that shapes with varying parameter counts can implement.
      *

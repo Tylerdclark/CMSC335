@@ -60,17 +60,38 @@ public class Triangle extends TwoDimensionalShape {
     @Override
     public JPanel getShape() throws IOException {
 
-        //All triangle corner x coordinate
-        int[]x={0,150,300};
 
-        //All triangle corner y coordinate
-        int[]y={200,0,200};
+
+
 
 
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+
+                String stats = String.format("The Area of your Triangle is : %.2f", area());
+                FontMetrics metrics = g.getFontMetrics();
+
+                // https://i.redd.it/7inz78of1ch51.jpg
+                int triX1 = (this.getWidth() / 2 ) - base;
+                int triX2 = this.getWidth() / 2;
+                int triX3 = (this.getWidth() / 2) + base;
+
+                int triY1 = (this.getHeight() - height )/2;
+                int triY2 = (this.getHeight() + height )/2;
+
+                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
+                int stringY = triY1 + height + 15;
+
+                //All triangle corner x coordinate
+                int[]x={triX1,triX2,triX3};
+
+                //All triangle corner y coordinate
+                int[]y={triY2,triY1,triY2};
+
+                g.drawString(stats, stringX ,stringY);
+
                 g.drawPolygon( x, y, 3);
             }
         };

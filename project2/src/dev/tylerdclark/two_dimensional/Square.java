@@ -62,10 +62,17 @@ public class Square extends TwoDimensionalShape {
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-                int margin = 10;
-                Dimension dim = getSize();
-                super.paintComponent(g);
-                g.drawRect(0, 0, 100, 100);
+
+                String stats = String.format("The Area of your Square is : %.2f", area());
+                FontMetrics metrics = g.getFontMetrics();
+
+                int rectX = (this.getWidth() - side)/2;
+                int rectY = (this.getHeight() - side )/2;
+                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
+                int stringY = rectY + side + 15;
+
+                g.drawRect(rectX, rectY , side, side);
+                g.drawString(stats, stringX ,stringY);
             }
         };
     }

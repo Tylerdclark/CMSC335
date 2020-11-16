@@ -59,13 +59,22 @@ public class Rectangle extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape() throws IOException {
+    public JPanel getShape(){
 
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawRect(0,0,width, height);
+                String stats = String.format("The Area of your shape is : %.2f", area());
+                FontMetrics metrics = g.getFontMetrics();
+
+                int rectX = (this.getWidth() - width)/2;
+                int rectY = (this.getHeight() - width )/2;
+                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
+                int stringY = rectY + height + 15;
+
+                g.drawRect(rectX, rectY , width, height);
+                g.drawString(stats, stringX ,stringY);
             }
         };
     }
