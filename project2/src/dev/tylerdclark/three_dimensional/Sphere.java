@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: Sphere.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 28 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 package dev.tylerdclark.three_dimensional;
@@ -59,7 +59,7 @@ public class Sphere extends ThreeDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape() throws IOException {
+    public JPanel getShapePanel() throws IOException {
         final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/sphere.jpg"));
         Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
 
@@ -67,6 +67,7 @@ public class Sphere extends ThreeDimensionalShape {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
+                g.drawString(String.format("Radius: %d", radius), 0, 15);
                 int imageX = (this.getWidth() - reScaledImage.getWidth(null)  )/2;
                 int imageY = (this.getHeight() - reScaledImage.getHeight(null))/2;
                 g.drawImage(reScaledImage, imageX, imageY, null);

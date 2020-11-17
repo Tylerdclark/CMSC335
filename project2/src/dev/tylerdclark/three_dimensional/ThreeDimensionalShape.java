@@ -13,6 +13,7 @@ package dev.tylerdclark.three_dimensional;
 import dev.tylerdclark.Shape;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Class to be extended by Sphere, Cube, Cone, Cylinder, and Torus. Made
@@ -28,5 +29,4 @@ public abstract class ThreeDimensionalShape extends Shape {
     * @return the result from the calculation of volume
     */
    public abstract double volume();
-
 }
