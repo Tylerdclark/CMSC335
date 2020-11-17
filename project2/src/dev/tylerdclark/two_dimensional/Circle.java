@@ -2,16 +2,15 @@
  * *****************************************************************************
  * FILE: Circle.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 25 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 package dev.tylerdclark.two_dimensional;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Circle extends TwoDimensionalShape {
 
-    private int radius, width, height;
+    private int radius;
 
     /**
      * Constructor method to initialize radius field and calculate {@link #area()}
@@ -55,22 +54,23 @@ public class Circle extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape(){
+    public JPanel getShapePanel(){
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
-                String stats = String.format("The Area of your shape is : %.2f", area());
+                g.drawString(String.format("Radius: %d", radius), 0, 15);
+                String stats = String.format("The Area of your Circle is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 
-                int circleX = (this.getWidth() - radius)/2;
-                int circleY = (this.getHeight() - radius )/2;
-                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
-                int stringY = circleY + radius + 15;
+                int diameter = radius * 2;
+                int circleX = (this.getWidth()-diameter)/2;
+                int circleY = (this.getHeight()-diameter)/2;
+                int stringX = (this.getWidth()-metrics.stringWidth(stats))/2;
+                int stringY = circleY+diameter+15;
 
-                g.drawOval(circleX, circleY , radius, radius);
-                g.drawString(stats, stringX ,stringY);
+                g.drawOval(circleX, circleY, diameter, diameter);
+                g.drawString(stats, stringX, stringY);
 
             }
         };

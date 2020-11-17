@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: TwoDimensionalShape.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 25 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 

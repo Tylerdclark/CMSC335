@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: Rectangle.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 25 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 
@@ -12,7 +12,6 @@ package dev.tylerdclark.two_dimensional;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -59,13 +58,14 @@ public class Rectangle extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape(){
+    public JPanel getShapePanel(){
 
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                String stats = String.format("The Area of your shape is : %.2f", area());
+                g.drawString(String.format("Width: %d, Height: %d", width, height), 0, 15);
+                String stats = String.format("The Area of your Rectangle is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 
                 int rectX = (this.getWidth() - width)/2;

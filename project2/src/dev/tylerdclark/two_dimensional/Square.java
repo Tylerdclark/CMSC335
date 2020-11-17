@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: Square.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 27 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 
@@ -12,7 +12,6 @@ package dev.tylerdclark.two_dimensional;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -58,11 +57,11 @@ public class Square extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape() throws IOException {
+    public JPanel getShapePanel(){
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
-
+                g.drawString(String.format("Side: %d", side), 0, 15);
                 String stats = String.format("The Area of your Square is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 

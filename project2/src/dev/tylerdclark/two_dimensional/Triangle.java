@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: Triangle.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 27 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 
@@ -12,7 +12,6 @@ package dev.tylerdclark.two_dimensional;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -58,18 +57,13 @@ public class Triangle extends TwoDimensionalShape {
      * @return returns a JPanel containing the shape
      */
     @Override
-    public JPanel getShape() throws IOException {
-
-
-
-
-
+    public JPanel getShapePanel(){
 
         return new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
+                g.drawString(String.format("Base: %d, Height: %d", base, height), 0, 15);
                 String stats = String.format("The Area of your Triangle is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 
@@ -77,21 +71,17 @@ public class Triangle extends TwoDimensionalShape {
                 int triX1 = (this.getWidth() / 2 ) - base;
                 int triX2 = this.getWidth() / 2;
                 int triX3 = (this.getWidth() / 2) + base;
-
                 int triY1 = (this.getHeight() - height )/2;
                 int triY2 = (this.getHeight() + height )/2;
-
                 int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
                 int stringY = triY1 + height + 15;
 
                 //All triangle corner x coordinate
                 int[]x={triX1,triX2,triX3};
-
                 //All triangle corner y coordinate
                 int[]y={triY2,triY1,triY2};
 
                 g.drawString(stats, stringX ,stringY);
-
                 g.drawPolygon( x, y, 3);
             }
         };
