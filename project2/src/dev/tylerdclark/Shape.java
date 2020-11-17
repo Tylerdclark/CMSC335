@@ -2,9 +2,9 @@
  * *****************************************************************************
  * FILE: Shape.java
  * NAME: Tyler D Clark
- * PROJECT: Project 1
+ * PROJECT: Project 2
  * COURSE: CMSC 335
- * DATE: 25 OCT 2020
+ * DATE: 12 Nov 2020
  * *****************************************************************************
  */
 
@@ -44,7 +44,7 @@ public abstract class Shape {
      * 
      * @return returns a JPanel containing the shape
      */
-    public abstract JPanel getShape() throws IOException;
+    public abstract JPanel getShapePanel() throws IOException;
 
     /**
      * Passes values to the objects in a way that shapes with varying parameter
