@@ -80,8 +80,14 @@ public class MenuGUI extends JFrame {
                 panels.forEach( panel -> // for each dynamically created panel
                         panel.getTextFields().forEach(text -> //get values from JTextFields
                                 values.add(Integer.parseInt(text.getText()))));
-                currentShape.passValues(values); //pass the values to be parsed by shape
-                drawFrame.drawShape(); //create shape drawing frame
+                if (values.stream().allMatch(v -> v > 0)) { //if all values are greater than 0
+                    currentShape.passValues(values); //pass the values to be parsed by shape
+                    drawFrame.drawShape(); //create shape drawing frame
+                } else {
+                    JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Please use positive, non-zero arguments.",
+                            "Warning", JOptionPane.ERROR_MESSAGE);
+                }
+
             } catch (IOException ioException) {
                 JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Issue with 3d image pathing",
                         "Warning", JOptionPane.ERROR_MESSAGE);
