@@ -60,7 +60,7 @@ public class Cube extends ThreeDimensionalShape {
      */
     @Override
     public JPanel getShapePanel() throws IOException {
-        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/Cube.jpg"));
+        final BufferedImage image = ImageIO.read(getClass().getResource("/img/cube.jpg"));
         Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
 
         return new JPanel() {

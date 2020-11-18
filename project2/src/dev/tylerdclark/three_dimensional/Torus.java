@@ -62,8 +62,8 @@ public class Torus extends ThreeDimensionalShape {
      */
     @Override
     public JPanel getShapePanel() throws IOException {
-        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/torus.jpg"));
-        Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
+        final BufferedImage image = ImageIO.read(getClass().getResource("/img/torus.jpg"));
+        Image reScaledImage = image.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
 
         return new JPanel() {
             @Override

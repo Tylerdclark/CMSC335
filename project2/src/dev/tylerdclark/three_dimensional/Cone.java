@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -60,8 +61,9 @@ public class Cone extends ThreeDimensionalShape {
      */
     @Override
     public JPanel getShapePanel() throws IOException {
-        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/cone.jpg"));
-        Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
+
+        final BufferedImage image = ImageIO.read(getClass().getResource("/img/cone.jpg"));
+        Image reScaledImage = image.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
 
         return new JPanel() {
             @Override
@@ -69,13 +71,14 @@ public class Cone extends ThreeDimensionalShape {
                 super.paintComponent(g);
                 g.drawString(String.format("Base radius: %d, Height: %d", baseRadius, height), 0, 15);
                 //centering with fast maffs
-                int imageX = (this.getWidth() - reScaledImage.getWidth(null)  )/2;
+                int imageX = (this.getWidth() - reScaledImage.getWidth(null))/2;
                 int imageY = (this.getHeight() - reScaledImage.getHeight(null))/2;
                 g.drawImage(reScaledImage, imageX, imageY, null);
                 int stringY = imageY + reScaledImage.getHeight(null) + 15;
                 g.drawString(String.format("The Volume of your Cone is : %.2f", volume()), imageX ,stringY);
             }
         };
+
     }
 
     /**

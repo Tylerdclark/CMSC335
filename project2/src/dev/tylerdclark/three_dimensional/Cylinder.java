@@ -15,6 +15,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 
 /**
@@ -61,8 +62,9 @@ public class Cylinder extends ThreeDimensionalShape {
      */
     @Override
     public JPanel getShapePanel() throws IOException {
-        final BufferedImage image = ImageIO.read(new File("src/dev/tylerdclark/img/cylinder.jpg"));
-        Image reScaledImage = image.getScaledInstance(300, 300, image.getType());
+
+        final BufferedImage image = ImageIO.read(getClass().getResource("/img/cylinder.jpg"));
+        Image reScaledImage = image.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
 
         return new JPanel() {
             @Override
