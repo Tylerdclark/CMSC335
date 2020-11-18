@@ -67,7 +67,7 @@ public class Circle extends TwoDimensionalShape {
                 int circleX = (this.getWidth()-diameter)/2;
                 int circleY = (this.getHeight()-diameter)/2;
                 int stringX = (this.getWidth()-metrics.stringWidth(stats))/2;
-                int stringY = circleY+diameter+15;
+                int stringY = circleY+diameter+30;
 
                 g.drawOval(circleX, circleY, diameter, diameter);
                 g.drawString(stats, stringX, stringY);

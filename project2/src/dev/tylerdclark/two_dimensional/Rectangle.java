@@ -68,10 +68,10 @@ public class Rectangle extends TwoDimensionalShape {
                 String stats = String.format("The Area of your Rectangle is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 
-                int rectX = (this.getWidth() - width)/2;
-                int rectY = (this.getHeight() - width )/2;
-                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
-                int stringY = rectY + height + 15;
+                int rectX = (this.getWidth()-width)/2;
+                int rectY = (this.getHeight()-height )/2;
+                int stringX = (this.getWidth()-metrics.stringWidth(stats))/2;
+                int stringY = rectY+height+30;
 
                 g.drawRect(rectX, rectY , width, height);
                 g.drawString(stats, stringX ,stringY);

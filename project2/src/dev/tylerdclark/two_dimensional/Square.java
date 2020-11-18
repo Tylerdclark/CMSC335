@@ -65,10 +65,10 @@ public class Square extends TwoDimensionalShape {
                 String stats = String.format("The Area of your Square is : %.2f", area());
                 FontMetrics metrics = g.getFontMetrics();
 
-                int rectX = (this.getWidth() - side)/2;
-                int rectY = (this.getHeight() - side )/2;
-                int stringX = (this.getWidth() - metrics.stringWidth(stats))/2;
-                int stringY = rectY + side + 15;
+                int rectX = (this.getWidth()-side)/2;
+                int rectY = (this.getHeight()-side )/2;
+                int stringX = (this.getWidth()-metrics.stringWidth(stats))/2;
+                int stringY = rectY+side+30;
 
                 g.drawRect(rectX, rectY , side, side);
                 g.drawString(stats, stringX ,stringY);

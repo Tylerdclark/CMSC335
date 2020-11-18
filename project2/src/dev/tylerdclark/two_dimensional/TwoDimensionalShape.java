@@ -15,8 +15,7 @@ import dev.tylerdclark.Shape;
 /**
  * Class to be extended by circle, square, triangle, and rectangle. Made
  * abstract as no instantiations of this class will be needed and implementation
- * of {@link #area()} will depend on child class. Calling toString will print
- * area information.
+ * of {@link #area()} will depend on child class.
  */
 public abstract class TwoDimensionalShape extends Shape {
     /**
