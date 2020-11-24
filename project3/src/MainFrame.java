@@ -1,14 +1,14 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
+
     public MainFrame(){
-        super("The title");
+        /* All of the usual Jframe stuff */
+        super("Traffic Simulator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(400,400));
-        panel.add(new JLabel("hello!"));
-        setContentPane(panel);
+        setSize(500,400);
+        /* Set layout Manager */
+        getContentPane().add(new InitialPanel().getPnlMain());
         pack();
         setVisible(true);
     }
