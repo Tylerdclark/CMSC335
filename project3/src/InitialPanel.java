@@ -5,7 +5,7 @@ public class InitialPanel {
 
     private final JPanel pnlMain;
 
-    public InitialPanel(MainFrame frame){
+    public InitialPanel(){
 
         pnlMain = new JPanel();
         pnlMain.setLayout(new GridBagLayout());
@@ -87,7 +87,7 @@ public class InitialPanel {
         gbc.gridy = 4;
         gbc.insets = new Insets(5, 10, 10, 5);
         pnlMain.add(submitBtn, gbc);
-
+        
         submitBtn.addActionListener( event -> {
             System.out.println(rowSlider.getValue());
             System.out.println(columnSlider.getValue());

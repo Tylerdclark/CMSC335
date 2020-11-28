@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 public class MainFrame extends JFrame {
 
@@ -8,7 +9,14 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,400);
         /* Set layout Manager */
-        getContentPane().add(new InitialPanel().getPnlMain());
+
+        JPanel contentPanel = new JPanel(new BorderLayout());
+        JPanel menu = new MenuPanel().getPnlMain();
+        JPanel background = new Background().getPnlMain();
+        background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        contentPanel.add(menu, BorderLayout.NORTH);
+        contentPanel.add( background, BorderLayout.CENTER);
+        getContentPane().add(contentPanel);
         pack();
         setVisible(true);
     }
