@@ -4,6 +4,8 @@ import java.awt.*;
 public class  MenuPanel{
 
     private final JPanel pnlMain;
+    private JTextField timerLbl;
+    Timer timer;
 
     public MenuPanel() {
 
@@ -16,6 +18,14 @@ public class  MenuPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(startBtn, gbc);
+        startBtn.addActionListener(event -> {
+            if (timer == null){
+                timer = new Timer(this.timerLbl);
+                timer.execute();
+            } else {
+                timer.play();
+            }
+        });
 
         JButton pauseBtn = new JButton("Pause");
         gbc = new GridBagConstraints();
@@ -23,6 +33,9 @@ public class  MenuPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(pauseBtn, gbc);
+        pauseBtn.addActionListener( event -> {
+            timer.pause();
+        });
 
         JButton stopBtn = new JButton("Stop");
         gbc = new GridBagConstraints();
@@ -30,6 +43,9 @@ public class  MenuPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(stopBtn, gbc);
+        stopBtn.addActionListener(event -> {
+            timer.cancel(true);
+        });
 
         JButton addBtn = new JButton("Add a car");
         gbc = new GridBagConstraints();
@@ -37,6 +53,14 @@ public class  MenuPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(addBtn, gbc);
+
+        timerLbl = new JTextField();
+        gbc = new GridBagConstraints();
+        gbc.gridx = 4;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 10, 10);
+        pnlMain.add(timerLbl, gbc);
+
 
     }
     public JPanel getPnlMain() {
