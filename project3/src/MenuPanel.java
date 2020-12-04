@@ -54,7 +54,7 @@ public class  MenuPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(addBtn, gbc);
 
-        timerLbl = new JTextField();
+        timerLbl = new JTextField(4);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
         gbc.gridy = 0;
