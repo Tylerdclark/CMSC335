@@ -1,6 +1,7 @@
 import javax.swing.*;
+import java.util.List;
 
-public class Timer extends SwingWorker<Void, Void> {
+public class Timer extends SwingWorker<Void, Long> {
 
     boolean play;
     long start;
@@ -28,12 +29,24 @@ public class Timer extends SwingWorker<Void, Void> {
         this.getState();
         while (play){
             long time = (System.currentTimeMillis() - start) / 1000;
-            textField.setText(String.valueOf(time));
+            publish(time);
             System.out.println(time);
-            wait(1000);
+            Thread.sleep(1000);
+            //wait(1000);
         }
 
         return null;
+    }
+
+    @Override
+    protected void process(List<Long> chunks) {
+        Long second = chunks.get(chunks.size()-1);
+        textField.setText(String.valueOf(second));
+    }
+
+    @Override
+    protected void done() {
+        System.out.println("done");
     }
 
     public void pause () {
