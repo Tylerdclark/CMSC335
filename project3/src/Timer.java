@@ -1,16 +1,17 @@
 import javax.swing.*;
 import java.util.List;
 
-public class Timer extends SwingWorker<Void, Long> {
+public class Timer extends SwingWorker<Void, Integer> {
 
-    boolean play;
-    long start;
+    private  boolean stop;
+    private  boolean pause;
+
     private final JTextField textField;
 
     Timer(JTextField textField){
         this.textField = textField;
-        this.start = System.currentTimeMillis();
-        this.play = true;
+        this.stop = false;
+        this.pause = false;
     }
     /**
      * Computes a result, or throws an exception if unable to do so.
@@ -26,21 +27,22 @@ public class Timer extends SwingWorker<Void, Long> {
      */
     @Override
     protected Void doInBackground() throws Exception {
-        this.getState();
-        while (play){
-            long time = (System.currentTimeMillis() - start) / 1000;
-            publish(time);
-            System.out.println(time);
+        int seconds = 0;
+        while (!stop){
+            publish(seconds);
+            System.out.println(seconds);
+            if (!pause){
+                seconds++;
+            }
             Thread.sleep(1000);
-            //wait(1000);
         }
 
         return null;
     }
 
     @Override
-    protected void process(List<Long> chunks) {
-        Long second = chunks.get(chunks.size()-1);
+    protected void process(List<Integer> chunks) {
+        Integer second = chunks.get(chunks.size()-1);
         textField.setText(String.valueOf(second));
     }
 
@@ -50,9 +52,14 @@ public class Timer extends SwingWorker<Void, Long> {
     }
 
     public void pause () {
-        this.play = false;
+        this.pause = true;
     }
     public void play () {
-        this.play = true;
+        this.pause = false;
+    }
+    public void stop () { this.stop = true; }
+
+    public boolean isStop() {
+        return stop;
     }
 }
