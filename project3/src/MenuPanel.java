@@ -19,7 +19,7 @@ public class  MenuPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(startBtn, gbc);
         startBtn.addActionListener(event -> {
-            if (timer == null){
+            if (timer == null || timer.isStop()){
                 timer = new Timer(this.timerLbl);
                 timer.execute();
             } else {
@@ -44,7 +44,7 @@ public class  MenuPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         pnlMain.add(stopBtn, gbc);
         stopBtn.addActionListener(event -> {
-            timer.cancel(true);
+            timer.stop();
         });
 
         JButton addBtn = new JButton("Add a car");
