@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Timer extends SwingWorker<Void, Integer> {
 
@@ -29,10 +30,10 @@ public class Timer extends SwingWorker<Void, Integer> {
     protected Void doInBackground() throws Exception {
         int seconds = 0;
         while (!stop){
-            publish(seconds);
-            System.out.println(seconds);
             if (!pause){
                 seconds++;
+                publish(seconds);
+                System.out.println(seconds);
             }
             Thread.sleep(1000);
         }
@@ -43,7 +44,8 @@ public class Timer extends SwingWorker<Void, Integer> {
     @Override
     protected void process(List<Integer> chunks) {
         Integer second = chunks.get(chunks.size()-1);
-        textField.setText(String.valueOf(second));
+        String time = String.format("%02d:%02d", second / 60, second % 60);
+        textField.setText(time);
     }
 
     @Override
@@ -58,8 +60,8 @@ public class Timer extends SwingWorker<Void, Integer> {
         this.pause = false;
     }
     public void stop () { this.stop = true; }
-
     public boolean isStop() {
         return stop;
     }
+
 }
