@@ -1,23 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class  MenuPanel{
+public class MenuPanel extends JPanel{
 
-    private final JPanel pnlMain;
     private JTextField timerLbl;
     Timer timer;
 
     public MenuPanel() {
 
-        pnlMain = new JPanel();
-        pnlMain.setLayout(new GridBagLayout());
+        this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
         JButton startBtn = new JButton("Start");
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
-        pnlMain.add(startBtn, gbc);
+        this.add(startBtn, gbc);
         startBtn.addActionListener(event -> {
             if (timer == null || timer.isStop()){
                 timer = new Timer(this.timerLbl);
@@ -32,18 +30,17 @@ public class  MenuPanel{
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
-        pnlMain.add(pauseBtn, gbc);
-        pauseBtn.addActionListener( event -> {
-            timer.pause();
-        });
+        this.add(pauseBtn, gbc);
+        pauseBtn.addActionListener( event -> timer.pause());
 
         JButton stopBtn = new JButton("Stop");
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
-        pnlMain.add(stopBtn, gbc);
+        this.add(stopBtn, gbc);
         stopBtn.addActionListener(event -> {
+            timerLbl.setText("0");
             timer.stop();
         });
 
@@ -52,18 +49,15 @@ public class  MenuPanel{
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
-        pnlMain.add(addBtn, gbc);
+        this.add(addBtn, gbc);
 
         timerLbl = new JTextField(4);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
-        pnlMain.add(timerLbl, gbc);
+        this.add(timerLbl, gbc);
 
 
-    }
-    public JPanel getPnlMain() {
-        return pnlMain;
     }
 }
