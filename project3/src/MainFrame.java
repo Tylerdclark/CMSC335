@@ -8,15 +8,13 @@ public class MainFrame extends JFrame {
         super("Traffic Simulator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(500,400);
-        /* Set layout Manager */
+        setResizable(false);
 
-        JPanel contentPanel = new JPanel(new BorderLayout());
-        JPanel menu = new MenuPanel().getPnlMain();
-        JPanel background = new Background().getPnlMain();
-        background.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-        contentPanel.add(menu, BorderLayout.NORTH);
-        contentPanel.add( background, BorderLayout.CENTER);
-        getContentPane().add(contentPanel);
+        MenuPanel menu = new MenuPanel();
+        Background background = new Background();
+        InitialPanel initialPanel = new InitialPanel(this, menu, background);
+
+        add(initialPanel);
         pack();
         setVisible(true);
     }
