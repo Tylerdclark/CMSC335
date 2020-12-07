@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class MainFrame extends JFrame {
 
@@ -11,7 +10,7 @@ public class MainFrame extends JFrame {
         setResizable(false);
 
         MenuPanel menu = new MenuPanel();
-        Background background = new Background();
+        BackgroundCanvas background = new BackgroundCanvas();
         InitialPanel initialPanel = new InitialPanel(this, menu, background);
 
         add(initialPanel);

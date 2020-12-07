@@ -4,7 +4,7 @@ import java.awt.*;
 public class InitialPanel extends JPanel{
 
 
-    public InitialPanel(MainFrame main, MenuPanel menu, Background background){
+    public InitialPanel(MainFrame main, MenuPanel menu, BackgroundCanvas background){
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -88,10 +88,10 @@ public class InitialPanel extends JPanel{
         
         submitBtn.addActionListener( event -> {
 
+            background.setCarCount(carSlider.getValue());
+            background.setColumnCount(columnSlider.getValue());
+            background.setRowCount(rowSlider.getValue());
 
-            System.out.println(rowSlider.getValue());
-            System.out.println(columnSlider.getValue());
-            System.out.println(carSlider.getValue());
             main.remove(this);
             main.setLayout(new BorderLayout());
             main.add(menu, BorderLayout.NORTH);
