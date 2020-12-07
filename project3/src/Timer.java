@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Timer extends SwingWorker<Void, Integer> {
 
@@ -33,7 +32,6 @@ public class Timer extends SwingWorker<Void, Integer> {
             if (!pause){
                 seconds++;
                 publish(seconds);
-                System.out.println(seconds);
             }
             Thread.sleep(1000);
         }
