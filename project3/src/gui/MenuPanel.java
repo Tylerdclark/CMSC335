@@ -1,5 +1,8 @@
+package gui;
+
 import javax.swing.*;
 import java.awt.*;
+import util.Timer;
 
 public class MenuPanel extends JPanel{
 

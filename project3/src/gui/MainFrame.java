@@ -1,3 +1,8 @@
+package gui;
+
+import gui.BackgroundCanvas;
+import gui.MenuPanel;
+
 import javax.swing.*;
 
 public class MainFrame extends JFrame {

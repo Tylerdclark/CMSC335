@@ -1,3 +1,5 @@
+package util;
+
 import javax.swing.*;
 import java.util.List;
 
@@ -6,7 +8,7 @@ public class Timer extends SwingWorker<Void, Integer> {
     private boolean stop, pause;
     private final JTextField textField;
 
-    Timer(JTextField textField){
+    public Timer(JTextField textField){
         this.textField = textField;
         this.stop = false;
         this.pause = false;

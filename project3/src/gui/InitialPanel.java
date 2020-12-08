@@ -1,3 +1,9 @@
+package gui;
+
+import gui.BackgroundCanvas;
+import gui.MainFrame;
+import gui.MenuPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -56,7 +62,7 @@ public class InitialPanel extends JPanel{
         gbc.insets = new Insets(5, 10, 5, 10);
         this.add(columnSlider, gbc);
 
-        JLabel carLabel = new JLabel("Initial Car Count:");
+        JLabel carLabel = new JLabel("Initial traffic.Car Count:");
         gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridx = 0;
