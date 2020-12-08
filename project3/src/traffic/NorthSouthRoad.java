@@ -1,4 +1,4 @@
-/* I'm going to split the roads into two types, which will help when creating junctions and also
+package traffic;/* I'm going to split the roads into two types, which will help when creating junctions and also
 with the creation of roads */
 
 import java.awt.*;
@@ -15,9 +15,9 @@ public class NorthSouthRoad {
     }
 
     void draw(Graphics graphics) {
-
-        
-
+        graphics.setColor(Color.yellow);
+        graphics.drawLine(roadMedianX, 0, roadMedianX, canvasHeight);
+        graphics.dispose();
 
         for (Car car : cars) {
             System.out.println(car);

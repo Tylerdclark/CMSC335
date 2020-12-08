@@ -1,3 +1,5 @@
+package traffic;
+
 import util.Timer;
 
 import javax.swing.*;
