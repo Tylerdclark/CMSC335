@@ -3,9 +3,7 @@ import java.util.List;
 
 public class Timer extends SwingWorker<Void, Integer> {
 
-    private  boolean stop;
-    private  boolean pause;
-
+    private boolean stop, pause;
     private final JTextField textField;
 
     Timer(JTextField textField){
@@ -50,7 +48,6 @@ public class Timer extends SwingWorker<Void, Integer> {
     protected void done() {
         System.out.println("done");
     }
-
     public void pause () {
         this.pause = true;
     }
@@ -61,5 +58,5 @@ public class Timer extends SwingWorker<Void, Integer> {
     public boolean isStop() {
         return stop;
     }
-
+    public boolean isPause() { return pause; }
 }

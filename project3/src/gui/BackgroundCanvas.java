@@ -10,9 +10,9 @@ public class BackgroundCanvas extends JPanel{
          /* In the future, will set size based on how many streets the program will need. */
          this.setPreferredSize(new Dimension(350,350));
          this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-
-
      }
+
+     /* Will paint the cars in a method */
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -42,7 +42,6 @@ public class BackgroundCanvas extends JPanel{
             g.setColor(Color.white);
             g.drawLine(0, currentRoadY , canvasWidth, currentRoadY );
         }
-
 
     }
 
