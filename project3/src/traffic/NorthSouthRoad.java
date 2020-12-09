@@ -8,16 +8,22 @@ public class NorthSouthRoad {
 
     private final ArrayList<Car> cars = new ArrayList<>();
     private final int roadMedianX, canvasHeight;
+    private final int leftSidePathX, rightSidePathX;
 
     public NorthSouthRoad(int roadMedianX, int canvasHeight) {
         this.roadMedianX = roadMedianX;
         this.canvasHeight = canvasHeight;
+        this.leftSidePathX = roadMedianX - 5;
+        this.rightSidePathX = roadMedianX + 5;
     }
 
-    void draw(Graphics graphics) {
+    public void draw(Graphics graphics) {
+        graphics.setColor(Color.white);
+        graphics.drawLine(roadMedianX-10, 0, roadMedianX-10, canvasHeight);
         graphics.setColor(Color.yellow);
         graphics.drawLine(roadMedianX, 0, roadMedianX, canvasHeight);
-        graphics.dispose();
+        graphics.setColor(Color.white);
+        graphics.drawLine(roadMedianX+10, 0, roadMedianX+10, canvasHeight);
 
         for (Car car : cars) {
             System.out.println(car);

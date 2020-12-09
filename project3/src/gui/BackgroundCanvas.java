@@ -1,5 +1,7 @@
 package gui;
 
+import traffic.NorthSouthRoad;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -34,8 +36,9 @@ public class BackgroundCanvas extends JPanel{
         for (int i = 1; i <= this.columnCount; i++) {
             int currentRoadX = firstX * i;
 
-            g.setColor(Color.white);
-            g.drawLine(currentRoadX, 0, currentRoadX, canvasHeight);
+            NorthSouthRoad road = new NorthSouthRoad(currentRoadX, canvasHeight);
+            road.draw(g);
+
         }
 
         for (int i = 1; i <= this.rowCount; i++) {
