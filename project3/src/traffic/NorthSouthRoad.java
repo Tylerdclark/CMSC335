@@ -2,19 +2,17 @@ package traffic;/* I'm going to split the roads into two types, which will help 
 with the creation of roads */
 
 import java.awt.*;
-import java.util.ArrayList;
 
-public class NorthSouthRoad {
-
-    private final ArrayList<Car> cars = new ArrayList<>();
-    private final int roadMedianX, canvasHeight;
-    private final int leftSidePathX, rightSidePathX;
+public class NorthSouthRoad extends Road{
+    final int roadMedianX, canvasHeight;
+    final int leftSidePathX, rightSidePathX;
 
     public NorthSouthRoad(int roadMedianX, int canvasHeight) {
         this.roadMedianX = roadMedianX;
         this.canvasHeight = canvasHeight;
         this.leftSidePathX = roadMedianX - 5;
         this.rightSidePathX = roadMedianX + 5;
+        this.length = canvasHeight;
     }
 
     public void draw(Graphics graphics) {
@@ -25,12 +23,10 @@ public class NorthSouthRoad {
         graphics.setColor(Color.white);
         graphics.drawLine(roadMedianX+10, 0, roadMedianX+10, canvasHeight);
 
-        for (Car car : cars) {
-            System.out.println(car);
+        for (Car car : this.cars) {
+            car.draw(graphics);
         }
     }
 
-    public void addCar(Car car) {
-        cars.add(car);
-    }
+
 }
