@@ -2,6 +2,7 @@ package gui;
 
 import gui.BackgroundCanvas;
 import gui.MenuPanel;
+import util.Timer;
 
 import javax.swing.*;
 
@@ -14,9 +15,7 @@ public class MainFrame extends JFrame {
         setSize(500,400);
         setResizable(false);
 
-        MenuPanel menu = new MenuPanel();
-        BackgroundCanvas background = new BackgroundCanvas();
-        InitialPanel initialPanel = new InitialPanel(this, menu, background);
+        InitialPanel initialPanel = new InitialPanel(this);
 
         add(initialPanel);
         pack();

@@ -1,16 +1,12 @@
 package gui;
 
-import gui.BackgroundCanvas;
-import gui.MainFrame;
-import gui.MenuPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class InitialPanel extends JPanel{
 
 
-    public InitialPanel(MainFrame main, MenuPanel menu, BackgroundCanvas background){
+    public InitialPanel(MainFrame main){
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -62,7 +58,7 @@ public class InitialPanel extends JPanel{
         gbc.insets = new Insets(5, 10, 5, 10);
         this.add(columnSlider, gbc);
 
-        JLabel carLabel = new JLabel("Initial traffic.Car Count:");
+        JLabel carLabel = new JLabel("Initial Car Count:");
         gbc = new GridBagConstraints();
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridx = 0;
@@ -94,14 +90,13 @@ public class InitialPanel extends JPanel{
         
         submitBtn.addActionListener( event -> {
 
-            background.setCarCount(carSlider.getValue());
-            background.setColumnCount(columnSlider.getValue());
-            background.setRowCount(rowSlider.getValue());
+            BackgroundCanvas backgroundCanvas = new BackgroundCanvas(rowSlider.getValue(), columnSlider.getValue(), carSlider.getValue());
+            MenuPanel menu = new MenuPanel(backgroundCanvas);
 
             main.remove(this);
             main.setLayout(new BorderLayout());
             main.add(menu, BorderLayout.NORTH);
-            main.add(background, BorderLayout.CENTER);
+            main.add(backgroundCanvas, BorderLayout.CENTER);
             main.revalidate();
             main.pack();
         });

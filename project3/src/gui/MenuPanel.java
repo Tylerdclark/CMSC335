@@ -8,8 +8,10 @@ public class MenuPanel extends JPanel{
 
     private JTextField timerLbl;
     Timer timer;
+    BackgroundCanvas backgroundCanvas;
 
-    public MenuPanel() {
+    public MenuPanel(BackgroundCanvas backgroundCanvas) {
+        this.backgroundCanvas = backgroundCanvas;
 
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -23,6 +25,7 @@ public class MenuPanel extends JPanel{
             if (timer == null || timer.isStop()){
                 timer = new Timer(this.timerLbl);
                 timer.execute();
+                backgroundCanvas.passTimer(timer);
             } else {
                 timer.play();
             }
@@ -54,6 +57,7 @@ public class MenuPanel extends JPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         this.add(addBtn, gbc);
 
+
         timerLbl = new JTextField(4);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
@@ -62,5 +66,9 @@ public class MenuPanel extends JPanel{
         this.add(timerLbl, gbc);
 
 
+    }
+
+    public Timer getTimer(){
+        return this.timer;
     }
 }
