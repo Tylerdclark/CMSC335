@@ -23,9 +23,11 @@ public class MenuPanel extends JPanel{
         this.add(startBtn, gbc);
         startBtn.addActionListener(event -> {
             if (timer == null || timer.isStop()){
-                timer = new Timer(this.timerLbl);
+                timer = new Timer(this.timerLbl, this.backgroundCanvas);
                 timer.execute();
                 backgroundCanvas.passTimer(timer);
+                backgroundCanvas.executeCars();
+                //backgroundCanvas.roads.forEach(road -> road.);
             } else {
                 timer.play();
             }
@@ -46,7 +48,7 @@ public class MenuPanel extends JPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         this.add(stopBtn, gbc);
         stopBtn.addActionListener(event -> {
-            timerLbl.setText("0");
+            timerLbl.setText("00:00");
             timer.stop();
         });
 
@@ -56,7 +58,10 @@ public class MenuPanel extends JPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         this.add(addBtn, gbc);
-
+        addBtn.addActionListener(event -> {
+            backgroundCanvas.addRandomCar();
+            backgroundCanvas.repaint();
+        });
 
         timerLbl = new JTextField(4);
         gbc = new GridBagConstraints();
@@ -64,7 +69,6 @@ public class MenuPanel extends JPanel{
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
         this.add(timerLbl, gbc);
-
 
     }
 
