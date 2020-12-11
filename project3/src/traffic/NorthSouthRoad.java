@@ -1,17 +1,17 @@
-package traffic;/* I'm going to split the roads into two types, which will help when creating junctions and also
-with the creation of roads */
+package traffic;
 
 import java.awt.*;
 
 public class NorthSouthRoad extends Road{
+
     final int roadMedianX, canvasHeight;
     final int leftSidePathX, rightSidePathX;
 
     public NorthSouthRoad(int roadMedianX, int canvasHeight) {
         this.roadMedianX = roadMedianX;
         this.canvasHeight = canvasHeight;
-        this.leftSidePathX = roadMedianX - 5;
-        this.rightSidePathX = roadMedianX + 5;
+        this.leftSidePathX = roadMedianX-10;
+        this.rightSidePathX = roadMedianX;
         this.length = canvasHeight;
     }
 
@@ -27,6 +27,5 @@ public class NorthSouthRoad extends Road{
             car.draw(graphics);
         }
     }
-
 
 }

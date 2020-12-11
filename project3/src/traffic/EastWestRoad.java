@@ -10,10 +10,9 @@ public class EastWestRoad extends Road{
     public EastWestRoad(int roadMedianY, int canvasWidth){
         this.roadMedianY = roadMedianY;
         this.canvasWidth = canvasWidth;
-        this.leftSidePathY = roadMedianY - 5;
-        this.rightSidePathY = roadMedianY + 5;
+        this.leftSidePathY = roadMedianY-10;
+        this.rightSidePathY = roadMedianY;
         this.length = canvasWidth;
-
     }
 
     public void draw(Graphics graphics) {
