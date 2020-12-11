@@ -1,5 +1,7 @@
 package util;
 
+import gui.BackgroundCanvas;
+
 import javax.swing.*;
 import java.util.List;
 
@@ -7,9 +9,11 @@ public class Timer extends SwingWorker<Void, Integer> {
 
     private boolean stop, pause;
     private final JTextField textField;
+    private final BackgroundCanvas backgroundCanvas;
 
-    public Timer(JTextField textField){
+    public Timer(JTextField textField, BackgroundCanvas backgroundCanvas){
         this.textField = textField;
+        this.backgroundCanvas = backgroundCanvas;
         this.stop = false;
         this.pause = false;
     }
@@ -44,6 +48,8 @@ public class Timer extends SwingWorker<Void, Integer> {
         Integer second = chunks.get(chunks.size()-1);
         String time = String.format("%02d:%02d", second / 60, second % 60);
         textField.setText(time);
+        backgroundCanvas.repaint();
+
     }
 
     @Override
