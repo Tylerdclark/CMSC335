@@ -24,13 +24,16 @@ public class BackgroundCanvas extends JPanel{
          this.rowCount = rowCount;
          this.columnCount = columnCount;
          this.carCount = carCount;
-         this.width = columnCount * 100;
-         this.height = rowCount * 100;
 
+         /*
+         * These are just magic numbers for now... maybe will fix ;)
+         ******************************************************************************/
+         this.width = 1000;
+         this.height = 800;
+
+         this.setPreferredSize(new Dimension(this.width, this.height));
          this.setBackground(Color.BLACK);
-         this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-         this.setSize(new Dimension(width, height));
-         this.setPreferredSize(new Dimension(width, height));
+         //this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
          initialize();
      }
 
@@ -38,23 +41,26 @@ public class BackgroundCanvas extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         roads.forEach(road -> road.draw(g));
-
-        System.out.println(this.getHeight());
-        System.out.println(this.getWidth());
     }
 
     public void populateCars(){
-        Random random = new Random();
         for (int i = 0; i < carCount ; i++) {
-            Road road = roads.get(random.nextInt(roads.size()));
-            road.addCar(new Car(road, timer));
+            addRandomCar();
         }
+    }
+
+    public void addRandomCar(){
+        Random random = new Random();
+        Road road = roads.get(random.nextInt(roads.size()));
+        Car car = new Car(road, timer);
+        car.passTimer(timer);
+        road.addCar(car);
+        this.revalidate();
     }
 
     public void passTimer(Timer timer){
         this.timer = timer;
     }
-
 
     private void initialize() {
 
@@ -65,7 +71,6 @@ public class BackgroundCanvas extends JPanel{
             int currentRoadX = firstX * i;
             NorthSouthRoad road = new NorthSouthRoad(currentRoadX, height);
             roads.add(road);
-
         }
 
         for (int i = 1; i <= this.rowCount; i++) {
@@ -75,5 +80,15 @@ public class BackgroundCanvas extends JPanel{
 
         }
         populateCars();
+    }
+
+    public void executeCars(){
+         roads.forEach(road -> {
+             ArrayList<Car> cars = road.getCars();
+             cars.forEach( car -> {
+                 car.passTimer(timer);
+                 car.execute();
+             });
+         });
     }
 }
