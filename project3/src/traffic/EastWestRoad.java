@@ -5,26 +5,31 @@ import java.awt.*;
 public class EastWestRoad extends Road{
 
     final int roadMedianY, canvasWidth;
-    final int leftSidePathY, rightSidePathY;
+    final int leftSideY, rightSideY;
+    static int counter = 1;
+    private int id;
 
     public EastWestRoad(int roadMedianY, int canvasWidth){
         this.roadMedianY = roadMedianY;
         this.canvasWidth = canvasWidth;
-        this.leftSidePathY = roadMedianY-10;
-        this.rightSidePathY = roadMedianY;
+        this.leftSideY = roadMedianY-5;
+        this.rightSideY = roadMedianY+5;
         this.length = canvasWidth;
+        this.id = counter++;
     }
 
     public void draw(Graphics graphics) {
         graphics.setColor(Color.white);
-        graphics.drawLine(0, roadMedianY-10, canvasWidth, roadMedianY-10);
-        graphics.setColor(Color.yellow);
-        graphics.drawLine(0, roadMedianY, canvasWidth, roadMedianY);
-        graphics.setColor(Color.white);
-        graphics.drawLine(0, roadMedianY+10, canvasWidth, roadMedianY+10);
+        graphics.drawLine(0, leftSideY, canvasWidth, leftSideY);
+        graphics.drawLine(0, rightSideY, canvasWidth, rightSideY);
 
         for (Car car : cars) {
             car.draw(graphics);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "EastWestRoad{" + "id=" + id + '}';
     }
 }
