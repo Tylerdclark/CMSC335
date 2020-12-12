@@ -1,9 +1,6 @@
 package gui;
 
-import traffic.Car;
-import traffic.EastWestRoad;
-import traffic.NorthSouthRoad;
-import traffic.Road;
+import traffic.*;
 import util.Timer;
 
 import javax.swing.*;
@@ -18,6 +15,9 @@ public class BackgroundCanvas extends JPanel{
     private final int carCount;
     private final int width, height;
     ArrayList<Road> roads = new ArrayList<>();
+    ArrayList<TrafficLight> trafficLights = new ArrayList<>();
+    ArrayList<NorthSouthRoad> nsRoads = new ArrayList<>();
+    ArrayList<EastWestRoad> ewRoads = new ArrayList<>();
     Timer timer;
 
      BackgroundCanvas(int rowCount, int columnCount, int carCount) {
@@ -33,7 +33,6 @@ public class BackgroundCanvas extends JPanel{
 
          this.setPreferredSize(new Dimension(this.width, this.height));
          this.setBackground(Color.BLACK);
-         //this.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
          initialize();
      }
 
@@ -41,6 +40,7 @@ public class BackgroundCanvas extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         roads.forEach(road -> road.draw(g));
+        trafficLights.forEach(trafficLight -> trafficLight.draw(g));
     }
 
     public void populateCars(){
@@ -62,7 +62,7 @@ public class BackgroundCanvas extends JPanel{
         this.timer = timer;
     }
 
-    private void initialize() {
+    public void initialize() {
 
         int firstX = width / (columnCount+1);
         int firstY = height / (rowCount+1);
@@ -71,18 +71,29 @@ public class BackgroundCanvas extends JPanel{
             int currentRoadX = firstX * i;
             NorthSouthRoad road = new NorthSouthRoad(currentRoadX, height);
             roads.add(road);
+            nsRoads.add(road);
         }
 
         for (int i = 1; i <= this.rowCount; i++) {
             int currentRoadY = firstY * i;
             EastWestRoad road = new EastWestRoad(currentRoadY, width);
             roads.add(road);
+            ewRoads.add(road);
 
         }
+        nsRoads.forEach(nsRoad -> {
+            ewRoads.forEach(ewRoad -> {
+                /*todo: as of right now, timer that gets passed is null. Please figure out when the best time to pass
+                   timer, maybe even use a passTimer method. */
+                TrafficLight trafficLight = new TrafficLight(timer, nsRoad, ewRoad);
+                trafficLights.add(trafficLight);
+            });
+        });
+
         populateCars();
     }
 
-    public void executeCars(){
+    public void executeCars(){ //also traffic lights
          roads.forEach(road -> {
              ArrayList<Car> cars = road.getCars();
              cars.forEach( car -> {
@@ -90,5 +101,6 @@ public class BackgroundCanvas extends JPanel{
                  car.execute();
              });
          });
+        trafficLights.forEach(SwingWorker::execute);
     }
 }
