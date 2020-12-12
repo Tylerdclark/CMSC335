@@ -27,6 +27,7 @@ public class MenuPanel extends JPanel{
                 timer.execute();
                 backgroundCanvas.passTimer(timer);
                 backgroundCanvas.executeCars();
+
                 //backgroundCanvas.roads.forEach(road -> road.);
             } else {
                 timer.play();
@@ -50,6 +51,7 @@ public class MenuPanel extends JPanel{
         stopBtn.addActionListener(event -> {
             timerLbl.setText("00:00");
             timer.stop();
+            backgroundCanvas.repaint();
         });
 
         JButton addBtn = new JButton("Add a car");
@@ -60,6 +62,7 @@ public class MenuPanel extends JPanel{
         this.add(addBtn, gbc);
         addBtn.addActionListener(event -> {
             backgroundCanvas.addRandomCar();
+            backgroundCanvas.executeCars();
             backgroundCanvas.repaint();
         });
 
