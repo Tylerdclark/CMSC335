@@ -13,33 +13,28 @@ public class Car extends SwingWorker<Void, Void> {
     private final Road road;
     private util.Timer timer;
     private final Color color = new Color((int)(Math.random() * 0x1000000));
-    private int x, y;
+    private int x;
+    private int y;
+    private final int id;
     Random random;
+    private final int speed;
 
     public Car(Road road, Timer timer){
         this.timer = timer;
         this.road = road;
-        counter++;
-        random = new Random();
+        this.id = counter++;
+        this.random = new Random();
+        this.speed = random.nextInt(50);
 
         if (road instanceof NorthSouthRoad){
-            if (random.nextBoolean()){
-                this.x = ((NorthSouthRoad) road).rightSidePathX;
+
+                this.x = ((NorthSouthRoad) road).leftSideX;
                 this.y = road.length-10;
-            }else{
-                this.x = ((NorthSouthRoad) road).leftSidePathX;
-                this.y = 0;
-            }
+
         }
         if (road instanceof EastWestRoad){
-
-            if (random.nextBoolean()){
                 this.x = 0;
-                this.y = ((EastWestRoad) road).rightSidePathY;
-            } else {
-                this.x = road.length-10;
-                this.y = ((EastWestRoad) road).leftSidePathY;
-            }
+                this.y = ((EastWestRoad) road).leftSideY;
         }
     }
 
@@ -63,14 +58,27 @@ public class Car extends SwingWorker<Void, Void> {
             if (!timer.isPause()) {
                 /*Do car stuff here*/
                 if (this.road instanceof NorthSouthRoad){
-                    y+=10;
+                    if(this.y <= 0){
+                        this.y = road.length-10;
+                    }else{
+                        y-=speed;
+                    }
+
                 }
                 if (this.road instanceof EastWestRoad){
-                    x+=10;
+
+                    if (this.x >= road.length){
+                        this.x = 0;
+                    }else{
+                        x+=speed;
+                    }
+
                 }
                 Thread.sleep(1000);
+            }else{
+                System.out.println(id+ " is paused");
             }
-
+            Thread.sleep(1000);
         }
         return null;
     }
@@ -83,6 +91,9 @@ public class Car extends SwingWorker<Void, Void> {
     public void passTimer(Timer timer){
         this.timer = timer;
     }
+    @Override
+    protected void done() {
 
-
+        System.out.println("Car "+ this.id + " is done");
+    }
 }
