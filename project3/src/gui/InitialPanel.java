@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class InitialPanel extends JPanel{
 
-
     public InitialPanel(MainFrame main){
 
         this.setLayout(new GridBagLayout());
@@ -26,7 +25,7 @@ public class InitialPanel extends JPanel{
         gbc.insets = new Insets(0, 10, 0, 0);
         this.add(rowLabel, gbc);
 
-        JSlider rowSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 3);
+        JSlider rowSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 2);
         rowSlider.setMajorTickSpacing(9);
         rowSlider.setMinorTickSpacing(1);
         rowSlider.setPaintTicks(true);
@@ -46,7 +45,7 @@ public class InitialPanel extends JPanel{
         gbc.insets = new Insets(0, 10, 0, 0);
         this.add(columnLabel, gbc);
 
-        JSlider columnSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 3);
+        JSlider columnSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 2);
         columnSlider.setMajorTickSpacing(9);
         columnSlider.setMinorTickSpacing(1);
         columnSlider.setPaintTicks(true);
@@ -66,7 +65,7 @@ public class InitialPanel extends JPanel{
         gbc.insets = new Insets(0, 10, 0, 0);
         this.add(carLabel, gbc);
 
-        JSlider carSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 3);
+        JSlider carSlider = new JSlider(JSlider.HORIZONTAL, 1, 10, 2);
         carSlider.setMajorTickSpacing(9);
         carSlider.setMinorTickSpacing(1);
         carSlider.setPaintTicks(true);
@@ -77,7 +76,6 @@ public class InitialPanel extends JPanel{
         gbc.gridy = 3;
         gbc.insets = new Insets(5, 10, 5, 10);
         this.add(carSlider, gbc);
-
 
         JButton submitBtn = new JButton("Submit");
         gbc = new GridBagConstraints();
@@ -90,7 +88,11 @@ public class InitialPanel extends JPanel{
         
         submitBtn.addActionListener( event -> {
 
-            BackgroundCanvas backgroundCanvas = new BackgroundCanvas(rowSlider.getValue(), columnSlider.getValue(), carSlider.getValue());
+            BackgroundCanvas backgroundCanvas = new BackgroundCanvas(
+                    rowSlider.getValue(),
+                    columnSlider.getValue(),
+                    carSlider.getValue()
+            );
             MenuPanel menu = new MenuPanel(backgroundCanvas);
 
             main.remove(this);
