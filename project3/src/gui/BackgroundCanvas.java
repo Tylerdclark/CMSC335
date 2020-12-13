@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BackgroundCanvas extends JPanel{
+    /* todo: I found that there is an upper limit(10) on the number of the SwingWorkers. Need to use executor service to circumvent limit */
 
     private final int rowCount;
     private final int columnCount;
@@ -49,21 +50,31 @@ public class BackgroundCanvas extends JPanel{
         }
     }
 
-    public void addRandomCar(){
+    public Car addRandomCar(){
         Random random = new Random();
         Road road = roads.get(random.nextInt(roads.size()));
-        Car car = new Car(road, timer);
-        car.passTimer(timer);
+        Car car = new Car(road);
+        //car.passTimer(timer);
         road.addCar(car);
         this.revalidate();
+        int roadCount = roads.stream().map(Road::getCars).mapToInt(ArrayList::size).sum();
+        System.out.println("# of cars: "+roadCount);
+        return car;
     }
 
     public void passTimer(Timer timer){
         this.timer = timer;
+        trafficLights.forEach(trafficLight ->
+                trafficLight.passTimer(timer)
+        );
+        roads.forEach(road -> {
+            ArrayList<Car> cars = road.getCars();
+            cars.forEach( car -> car.passTimer(timer));
+        });
     }
 
     public void initialize() {
-
+        System.out.println("New background initialized");
         int firstX = width / (columnCount+1);
         int firstY = height / (rowCount+1);
 
@@ -81,26 +92,25 @@ public class BackgroundCanvas extends JPanel{
             ewRoads.add(road);
 
         }
-        nsRoads.forEach(nsRoad -> {
-            ewRoads.forEach(ewRoad -> {
-                /*todo: as of right now, timer that gets passed is null. Please figure out when the best time to pass
-                   timer, maybe even use a passTimer method. */
-                TrafficLight trafficLight = new TrafficLight(timer, nsRoad, ewRoad);
-                trafficLights.add(trafficLight);
-            });
-        });
+        nsRoads.forEach(nsRoad -> ewRoads.forEach(ewRoad -> {
+            TrafficLight trafficLight = new TrafficLight(nsRoad, ewRoad);
+            nsRoad.addTrafficLight(trafficLight);
+            ewRoad.addTrafficLight(trafficLight);
+            trafficLights.add(trafficLight);
+        }));
 
         populateCars();
     }
 
-    public void executeCars(){ //also traffic lights
-         roads.forEach(road -> {
-             ArrayList<Car> cars = road.getCars();
-             cars.forEach( car -> {
-                 car.passTimer(timer);
-                 car.execute();
-             });
-         });
+    public void executeWorkers(){
+        roads.forEach(road -> {
+            ArrayList<Car> cars = road.getCars();
+            cars.forEach(SwingWorker::execute);
+        });
         trafficLights.forEach(SwingWorker::execute);
     }
+
+    public int getRowCount(){ return this.rowCount; }
+    public int getColumnCount() { return columnCount; }
+    public int getCarCount() { return carCount; }
 }
