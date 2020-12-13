@@ -1,12 +1,12 @@
 package traffic;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class NorthSouthRoad extends Road{
 
     final int roadMedianX, canvasHeight;
     final int leftSideX, rightSideX;
-    private int id;
     static int counter = 1;
 
     public NorthSouthRoad(int roadMedianX, int canvasHeight) {
@@ -15,7 +15,9 @@ public class NorthSouthRoad extends Road{
         this.leftSideX = roadMedianX-5;
         this.rightSideX = roadMedianX+5;
         this.length = canvasHeight;
-        this.id = counter++;
+        int id = counter++;
+        this.cars = new ArrayList<>();
+        this.trafficLights = new ArrayList<>();
     }
 
     public void draw(Graphics graphics) {
@@ -28,8 +30,4 @@ public class NorthSouthRoad extends Road{
         }
     }
 
-    @Override
-    public String toString() {
-        return "NorthSouthRoad{" + "id=" + id + '}';
-    }
 }

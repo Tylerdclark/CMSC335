@@ -1,13 +1,13 @@
 package traffic;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class EastWestRoad extends Road{
 
     final int roadMedianY, canvasWidth;
     final int leftSideY, rightSideY;
     static int counter = 1;
-    private int id;
 
     public EastWestRoad(int roadMedianY, int canvasWidth){
         this.roadMedianY = roadMedianY;
@@ -15,7 +15,9 @@ public class EastWestRoad extends Road{
         this.leftSideY = roadMedianY-5;
         this.rightSideY = roadMedianY+5;
         this.length = canvasWidth;
-        this.id = counter++;
+        int id = counter++;
+        this.cars = new ArrayList<>();
+        this.trafficLights = new ArrayList<>();
     }
 
     public void draw(Graphics graphics) {
@@ -26,10 +28,5 @@ public class EastWestRoad extends Road{
         for (Car car : cars) {
             car.draw(graphics);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "EastWestRoad{" + "id=" + id + '}';
     }
 }
