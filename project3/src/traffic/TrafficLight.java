@@ -4,6 +4,7 @@ import util.Timer;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class TrafficLight extends SwingWorker<Void, Void> {
 
@@ -14,9 +15,9 @@ public class TrafficLight extends SwingWorker<Void, Void> {
     Color ewLightColor = Color.GREEN;
     Color nsLightColor = Color.RED;
     static int counter = 0;
+    Random random;
 
-   public TrafficLight(Timer timer, NorthSouthRoad nsRoad, EastWestRoad ewRoad){
-       this.timer = timer;
+   public TrafficLight(NorthSouthRoad nsRoad, EastWestRoad ewRoad){
        this.nsRoad = nsRoad;
        this.ewRoad = ewRoad;
        this.ewLightX = nsRoad.leftSideX-10;
@@ -24,7 +25,8 @@ public class TrafficLight extends SwingWorker<Void, Void> {
        this.nsLightX = nsRoad.rightSideX;
        this.nsLightY = ewRoad.rightSideY;
        this.id = counter++;
-       //System.out.println(id+" traffic light is at ("+this.ewLightX+","+this.ewLightY+")"+",("+this.nsLightX+","+this.nsLightY+")");
+       random = new Random();
+       System.out.println("Traffic light #"+id+" created");
    }
 
     /**
@@ -47,8 +49,7 @@ public class TrafficLight extends SwingWorker<Void, Void> {
                 ewLightColor = nsLightColor;
                 nsLightColor = temp;
             }
-            System.out.println("traffic" + id);
-            Thread.sleep(5000);
+            Thread.sleep(1000 * random.nextInt(10));
         }
         return null;
     }
@@ -63,5 +64,9 @@ public class TrafficLight extends SwingWorker<Void, Void> {
         graphics.fillOval(ewLightX, ewLightY,10, 10);
         graphics.setColor(nsLightColor);
         graphics.fillOval(nsLightX, nsLightY, 10, 10);
+    }
+
+    public void passTimer(Timer timer){
+        this.timer = timer;
     }
 }
