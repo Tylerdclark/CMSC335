@@ -19,12 +19,12 @@ public class Car extends SwingWorker<Void, Void> {
     Random random;
     private final int speed;
 
-    public Car(Road road, Timer timer){
-        this.timer = timer;
+    public Car(Road road){
         this.road = road;
         this.id = counter++;
         this.random = new Random();
         this.speed = random.nextInt(50);
+        System.out.println("Car #"+this.id+" created");
 
         if (road instanceof NorthSouthRoad){
 
@@ -72,11 +72,7 @@ public class Car extends SwingWorker<Void, Void> {
                     }else{
                         x+=speed;
                     }
-
                 }
-                Thread.sleep(1000);
-            }else{
-                System.out.println(id+ " is paused");
             }
             Thread.sleep(1000);
         }
@@ -93,7 +89,33 @@ public class Car extends SwingWorker<Void, Void> {
     }
     @Override
     protected void done() {
-
         System.out.println("Car "+ this.id + " is done");
     }
+
+    public boolean tryMove() {
+        boolean isNS = this.road instanceof NorthSouthRoad;
+        boolean isEW = this.road instanceof EastWestRoad;
+
+        /* Check if another car is where we are going to be or anywhere between */
+        /* If the car is slower, match speed and wait 100 ms*/
+        /* If the car is faster, wait 100 ms */
+        /* If there is an intersection where we will be going, check the current light*/
+        /* If it is red, wait 1000ms and check again */
+        /* If it is green, make a decision to either turn or go straight */
+
+        return true;
+    }
+    private void moveEast(int speed){
+        this.y-=speed;
+    }
+    private void moveNorth(int speed){
+        this.x+=speed;
+    }
+    private void turnEast(int speed){
+
+    }
+    private void turnNorth(int speed){
+
+    }
+
 }
