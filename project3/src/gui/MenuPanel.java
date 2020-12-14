@@ -1,3 +1,12 @@
+/*
+ * *****************************************************************************
+ * FILE: MenuPanel.java
+ * NAME: Tyler D Clark
+ * PROJECT: Project 3
+ * COURSE: CMSC 335
+ * DATE: 13 Dec 2020
+ * *****************************************************************************
+ */
 package gui;
 
 import javax.swing.*;
@@ -6,13 +15,20 @@ import java.awt.*;
 import traffic.Car;
 import util.Timer;
 
+/**
+ * This JPanel class allows the simulation to be started, paused, stopped and allow random cars to be added
+ */
 public class MenuPanel extends JPanel{
 
     private JTextField timerLbl;
-    Timer timer;
-    BackgroundCanvas backgroundCanvas;
-    int rows, columns, cars;
+    private Timer timer;
+    private BackgroundCanvas backgroundCanvas;
+    private final int rows, columns, cars;
 
+    /**
+     * Constructor that should only get called once.
+     * @param backgroundCanvas - canvas that the controls of this panel will be controlling
+     */
     public MenuPanel(BackgroundCanvas backgroundCanvas) {
         this.backgroundCanvas = backgroundCanvas;
         /* Setting these number, so if we need to stop and start*/
@@ -29,7 +45,6 @@ public class MenuPanel extends JPanel{
         gbc.insets = new Insets(10, 10, 10, 10);
         this.add(startBtn, gbc);
         startBtn.addActionListener(event -> {
-            //when I call this after creating a new background, the cars don't move
             if (timer == null || timer.isStop()){
                 timer = new Timer(this.timerLbl, this.backgroundCanvas);
                 timer.execute();
@@ -63,7 +78,7 @@ public class MenuPanel extends JPanel{
             revalidate();
             repaint();
         });
-
+        /* todo: As it stands, adding a random car while the sim is stopped does not work */
         JButton addBtn = new JButton("Add a car");
         gbc = new GridBagConstraints();
         gbc.gridx = 3;
@@ -73,10 +88,10 @@ public class MenuPanel extends JPanel{
         addBtn.addActionListener(event -> {
             Car car = this.backgroundCanvas.addRandomCar();
             car.passTimer(timer);
-//            if (!timer.isPause() || !timer.isStop()){ //don't start when adding when stopped
+//            if (!timer.isPause() || !timer.isStop()){
 //                car.execute();
 //            }
-            car.execute(); //this causes the swingworker to finish right away
+            car.execute(); //this causes the swingworker to finish right away (if stopped)
         });
 
         timerLbl = new JTextField(4);

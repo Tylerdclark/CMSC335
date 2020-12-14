@@ -1,10 +1,26 @@
+/*
+ * *****************************************************************************
+ * FILE: InitialPanel.java
+ * NAME: Tyler D Clark
+ * PROJECT: Project 3
+ * COURSE: CMSC 335
+ * DATE: 13 Dec 2020
+ * *****************************************************************************
+ */
 package gui;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This JPanel allows options to be selected for the simulation. I'm not good at gridbaglayout yet.. don't judge!
+ */
 public class InitialPanel extends JPanel{
 
+    /**
+     * this object collects the parameters for the backgroundCanvas object in the simulation
+     * @param main the Main Frame which other panels will be added to.
+     */
     public InitialPanel(MainFrame main){
 
         this.setLayout(new GridBagLayout());
@@ -85,7 +101,8 @@ public class InitialPanel extends JPanel{
         gbc.gridy = 4;
         gbc.insets = new Insets(5, 10, 10, 5);
         this.add(submitBtn, gbc);
-        
+
+        /* Really the only action happens here */
         submitBtn.addActionListener( event -> {
 
             BackgroundCanvas backgroundCanvas = new BackgroundCanvas(
@@ -95,6 +112,7 @@ public class InitialPanel extends JPanel{
             );
             MenuPanel menu = new MenuPanel(backgroundCanvas);
 
+            /* Honestly don't doing it this way, but ¯\_(ツ)_/¯ */
             main.remove(this);
             main.setLayout(new BorderLayout());
             main.add(menu, BorderLayout.NORTH);

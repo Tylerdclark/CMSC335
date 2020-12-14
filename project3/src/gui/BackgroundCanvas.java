@@ -1,3 +1,13 @@
+/*
+ * *****************************************************************************
+ * FILE: BackgroundCanvas.java
+ * NAME: Tyler D Clark
+ * PROJECT: Project 3
+ * COURSE: CMSC 335
+ * DATE: 13 Dec 2020
+ * *****************************************************************************
+ */
+
 package gui;
 
 import traffic.*;
@@ -8,6 +18,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The heavy worker of the program. This class creates a panel which is where all of the drawing will take place. Create
+ * and draws the columns, rows, and cars. Also executes the workers when needed.
+ */
 public class BackgroundCanvas extends JPanel{
     /* todo: I found that there is an upper limit(10) on the number of the SwingWorkers. Need to use executor service to circumvent limit */
 
@@ -21,6 +35,13 @@ public class BackgroundCanvas extends JPanel{
     ArrayList<EastWestRoad> ewRoads = new ArrayList<>();
     Timer timer;
 
+    /**
+     * Main constructor that creates a drawing object which will be place on the main frame of the application.
+     *
+     * @param rowCount number of row of roads for the simulation
+     * @param columnCount number of columns of roads for the simulation
+     * @param carCount number of (initial) cars for the application
+     */
      BackgroundCanvas(int rowCount, int columnCount, int carCount) {
          this.rowCount = rowCount;
          this.columnCount = columnCount;
@@ -37,6 +58,11 @@ public class BackgroundCanvas extends JPanel{
          initialize();
      }
 
+    /**
+     * This paints to the panel by calling each of the draw methods for the roads, which will in turn call the draw
+     * methods for the cars. Additionally, it calls the draw method for the TrafficLight objects that this object has.
+     * @param g graphics to draw to
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -44,24 +70,33 @@ public class BackgroundCanvas extends JPanel{
         trafficLights.forEach(trafficLight -> trafficLight.draw(g));
     }
 
+    /**
+     * Adds a random car per the {@link #carCount} argument to the constructor using the {@link #addRandomCar()} method
+     */
     public void populateCars(){
         for (int i = 0; i < carCount ; i++) {
             addRandomCar();
         }
     }
 
+    /**
+     * Takes a random road from those create and adds a car to the road.
+     * @return returns the car to be executed
+     */
     public Car addRandomCar(){
         Random random = new Random();
         Road road = roads.get(random.nextInt(roads.size()));
         Car car = new Car(road);
-        //car.passTimer(timer);
         road.addCar(car);
         this.revalidate();
-        int roadCount = roads.stream().map(Road::getCars).mapToInt(ArrayList::size).sum();
-        System.out.println("# of cars: "+roadCount);
         return car;
     }
 
+    /**
+     * Passes a timer which will allow the simulation to pause, stop and play. This object also gets passed to the
+     * SwingWorkers.
+     * @param timer timer object to be passed to this object and the object members of the class
+     */
     public void passTimer(Timer timer){
         this.timer = timer;
         trafficLights.forEach(trafficLight ->
@@ -73,7 +108,12 @@ public class BackgroundCanvas extends JPanel{
         });
     }
 
+    /**
+     * creates the roads and passes their draw values (which took a lot of head scratching to figure out) also creates
+     * the correct number of traffic lights and {@link #populateCars()}
+     */
     public void initialize() {
+
         System.out.println("New background initialized");
         int firstX = width / (columnCount+1);
         int firstY = height / (rowCount+1);
@@ -84,13 +124,11 @@ public class BackgroundCanvas extends JPanel{
             roads.add(road);
             nsRoads.add(road);
         }
-
         for (int i = 1; i <= this.rowCount; i++) {
             int currentRoadY = firstY * i;
             EastWestRoad road = new EastWestRoad(currentRoadY, width);
             roads.add(road);
             ewRoads.add(road);
-
         }
         nsRoads.forEach(nsRoad -> ewRoads.forEach(ewRoad -> {
             TrafficLight trafficLight = new TrafficLight(nsRoad, ewRoad);
@@ -102,6 +140,10 @@ public class BackgroundCanvas extends JPanel{
         populateCars();
     }
 
+    /**
+     * The Cars and TrafficLights extend SwingWorker and through this method they are executed. They will be immediately
+     * "done" if the Cars and TrafficLights have a null Timer.
+     */
     public void executeWorkers(){
         roads.forEach(road -> {
             ArrayList<Car> cars = road.getCars();
@@ -109,7 +151,7 @@ public class BackgroundCanvas extends JPanel{
         });
         trafficLights.forEach(SwingWorker::execute);
     }
-
+    /* The getters - self explanatory */
     public int getRowCount(){ return this.rowCount; }
     public int getColumnCount() { return columnCount; }
     public int getCarCount() { return carCount; }
