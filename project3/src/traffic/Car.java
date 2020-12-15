@@ -77,6 +77,10 @@ public class Car extends SwingWorker<Void, Void> {
         return null;
     }
 
+    /**
+     * Takes the road and sees if there is any intersections or cars in the path. If there is an intersection, checks
+     * the light status and stops if it is red. If the light is green, randomly chooses to turn or go straight.
+     */
     public void tryMoveNorth() {
         ArrayList<Car> cars = road.getCars();
         ArrayList<TrafficLight> lights = road.getTrafficLights();
@@ -105,7 +109,8 @@ public class Car extends SwingWorker<Void, Void> {
                 TrafficLight light = inTheWayLights.get(0);
                 if (light.nsStatus == LightStatus.STOP) {
                     // move to directly before the light
-                    moveNorth(this.y - light.nsLightY - 5);
+                    int stopCount = inTheWayCars.size() > 0 ? inTheWayCars.size() : 1;
+                    moveNorth(this.y - light.nsLightY - (10 * stopCount));
                 } else if(light.nsStatus == LightStatus.GO){
                     if(random.nextBoolean()){
                         moveNorth(this.speed);
@@ -118,6 +123,10 @@ public class Car extends SwingWorker<Void, Void> {
             }
     }
 
+    /**
+     * Takes the road and sees if there is any intersections or cars in the path. If there is an intersection, checks
+     * the light status and stops if it is red. If the light is green, randomly chooses to turn or go straight.
+     */
     private void tryMoveEast(){
         ArrayList<Car> cars = road.getCars();
         ArrayList<TrafficLight> lights = road.getTrafficLights();
@@ -144,7 +153,8 @@ public class Car extends SwingWorker<Void, Void> {
                 TrafficLight light = inTheWayLights.get(0);
                 if (light.ewStatus == LightStatus.STOP) {
                     // move to directly before the light
-                    moveEast(light.ewLightX - this.x - 5); //
+                    int stopCount = inTheWayCars.size() > 0 ? inTheWayCars.size() : 1;
+                    moveEast(light.ewLightX - this.x - (10 * stopCount) ); //
                 } else if(light.ewStatus == LightStatus.GO){
                     if(random.nextBoolean()){
                         moveEast(this.speed);
@@ -157,6 +167,10 @@ public class Car extends SwingWorker<Void, Void> {
             }
     }
 
+    /**
+     * if there is any cars in the way, slows to the speed or stays the same if slower.
+     * @param inTheWayCars cars in the path of this car.
+     */
     private void slowForSlowCars(ArrayList<Car> inTheWayCars) {
 
             final int[] slowestSpeed = {this.speed};
@@ -168,18 +182,32 @@ public class Car extends SwingWorker<Void, Void> {
             this.speed = slowestSpeed[0];
     }
 
+    /**
+     * Moves positively on the x axis
+     * @param distance the amount to move
+     */
     private void moveEast(int distance){
         this.x+=distance;
         if (this.x >= this.road.length){
             this.x = 0;
         }
     }
+
+    /**
+     * Moves negatively on the y axis
+     * @param distance the amount to move
+     */
     private void moveNorth(int distance){
         this.y-=distance;
         if(this.y <= 0){
             this.y = this.road.length-10;
         }
     }
+
+    /**
+     * Moves north to the light and the left over eastward
+     * @param light to move to
+     */
     private void turnEast(TrafficLight light){
         int distanceToLight = this.y - light.nsLightY;
         int leftOver = this.speed - distanceToLight;
@@ -190,6 +218,11 @@ public class Car extends SwingWorker<Void, Void> {
         moveEast(leftOver);
 
     }
+
+    /**
+     * Moves east to the light and the left over northward
+     * @param light to move to
+     */
     private void turnNorth(TrafficLight light){
         int distanceToLight = light.ewLightX - this.x;
         int leftOver = this.speed - distanceToLight;
@@ -200,14 +233,26 @@ public class Car extends SwingWorker<Void, Void> {
         moveNorth(leftOver);
     }
 
+    /**
+     * Draws this car
+     * @param graphics to draw to
+     */
     public void draw(Graphics graphics){
         graphics.setColor(this.color);
         graphics.fillRect(this.x, this.y,10,10 );
     }
 
+    /**
+     * Passes a timer to this car object
+     * @param timer to pass
+     */
     public void passTimer(Timer timer){
         this.timer = timer;
     }
+
+    /**
+     * done
+     */
     @Override
     protected void done() {
         System.out.println("Car "+ this.id + " is done");
