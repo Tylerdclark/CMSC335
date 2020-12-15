@@ -18,7 +18,8 @@ import java.awt.*;
 public class InitialPanel extends JPanel{
 
     /**
-     * this object collects the parameters for the backgroundCanvas object in the simulation
+     * this object collects the parameters for the backgroundCanvas object in the simulation. Can create up to 10 rows
+     * and columns (which will equate to 100 intersections!) and start with up to 10 cars (can add more later)
      * @param main the Main Frame which other panels will be added to.
      */
     public InitialPanel(MainFrame main){
