@@ -17,13 +17,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * The heavy worker of the program. This class creates a panel which is where all of the drawing will take place. Create
  * and draws the columns, rows, and cars. Also executes the workers when needed.
  */
 public class BackgroundCanvas extends JPanel{
-    /* todo: I found that there is an upper limit(10) on the number of the SwingWorkers. Need to use executor service to circumvent limit */
 
     private final int rowCount;
     private final int columnCount;
@@ -34,6 +35,9 @@ public class BackgroundCanvas extends JPanel{
     ArrayList<NorthSouthRoad> nsRoads = new ArrayList<>();
     ArrayList<EastWestRoad> ewRoads = new ArrayList<>();
     Timer timer;
+    /* I found that there is an upper limit(10) on the number of the SwingWorkers. Need to use executor service to
+    circumvent limit */
+    ExecutorService executorService;
 
     /**
      * Main constructor that creates a drawing object which will be place on the main frame of the application.
@@ -46,6 +50,8 @@ public class BackgroundCanvas extends JPanel{
          this.rowCount = rowCount;
          this.columnCount = columnCount;
          this.carCount = carCount;
+         int EXTRA_CARS = 10; //give room to add 10 more cars
+         this.executorService = Executors.newFixedThreadPool((rowCount * columnCount) + carCount + EXTRA_CARS + 1);
 
          /*
          * These are just magic numbers for now... maybe will fix ;)
@@ -147,9 +153,11 @@ public class BackgroundCanvas extends JPanel{
     public void executeWorkers(){
         roads.forEach(road -> {
             ArrayList<Car> cars = road.getCars();
-            cars.forEach(SwingWorker::execute);
+            /* cars.forEach(SwingWorker::execute); // this is for w/o executor */
+            cars.forEach(car -> executorService.submit(car));
         });
-        trafficLights.forEach(SwingWorker::execute);
+        /* trafficLights.forEach(SwingWorker::execute); //this is for w/o executor */
+        trafficLights.forEach(light -> executorService.submit(light));
     }
     /* The getters - self explanatory */
     public int getRowCount(){ return this.rowCount; }
