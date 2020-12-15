@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="195.27452034577283" y="120.0">dev.tylerdclark.traffic.TrafficLight</node>
+    <node x="0.0" y="0.0">dev.tylerdclark.traffic.NorthSouthRoad</node>
+    <node x="110.68839342188494" y="440.0">dev.tylerdclark.traffic.Car</node>
+    <node x="77.93839342188494" y="230.0">dev.tylerdclark.traffic.Road</node>
+    <node x="194.95888941598156" y="750.0">dev.tylerdclark.gui.InitialPanel</node>
+    <node x="382.22433059245213" y="0.0">dev.tylerdclark.util.Timer</node>
+    <node x="223.60785367910614" y="0.0">dev.tylerdclark.util.LightStatus</node>
+    <node x="206.45888941598156" y="830.0">dev.tylerdclark.gui.MainFrame</node>
+    <node x="256.33388941598156" y="670.0">dev.tylerdclark.gui.MenuPanel</node>
+    <node x="229.95888941598156" y="910.0">dev.tylerdclark.gui.App</node>
+    <node x="193.79222274931493" y="580.0">dev.tylerdclark.gui.BackgroundCanvas</node>
+    <node x="178.93839342188494" y="320.0">dev.tylerdclark.traffic.EastWestRoad</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.traffic.TrafficLight">
+      <point x="30.529411764705912" y="-15.0" />
+      <point x="310.82163451402084" y="510.0" />
+      <point x="361.0933270082227" y="510.0" />
+      <point x="361.0933270082227" y="180.0" />
+      <point x="310.6495203457728" y="180.0" />
+      <point x="44.375" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.traffic.NorthSouthRoad">
+      <point x="-61.05882352941177" y="-15.0" />
+      <point x="219.23339921990316" y="530.0" />
+      <point x="26.235360004216886" y="530.0" />
+      <point x="26.235360004216886" y="70.0" />
+      <point x="49.375" y="70.0" />
+      <point x="-29.625" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.TrafficLight" target="dev.tylerdclark.util.LightStatus">
+      <point x="-11.833333333333371" y="-15.0" />
+      <point x="254.44118701243946" y="100.0" />
+      <point x="245.94118701243949" y="100.0" />
+      <point x="-44.666666666666664" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.TrafficLight" target="dev.tylerdclark.traffic.EastWestRoad">
+      <point x="8.875" y="15.0" />
+      <point x="275.1495203457728" y="200.0" />
+      <point x="299.56339342188494" y="200.0" />
+      <point x="299.56339342188494" y="300.0" />
+      <point x="303.18839342188494" y="300.0" />
+      <point x="53.25" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.InitialPanel" target="dev.tylerdclark.gui.BackgroundCanvas">
+      <point x="-53.25" y="-15.0" />
+      <point x="212.70888941598156" y="725.0" />
+      <point x="234.83388941598156" y="725.0" />
+      <point x="234.83388941598156" y="650.0" />
+      <point x="211.09222274931494" y="650.0" />
+      <point x="-69.19999999999999" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.NorthSouthRoad" target="dev.tylerdclark.traffic.Road">
+      <point x="29.625" y="15.0" />
+      <point x="108.625" y="100.0" />
+      <point x="87.08572896900696" y="100.0" />
+      <point x="87.08572896900696" y="210.0" />
+      <point x="91.27172675521825" y="210.0" />
+      <point x="-26.666666666666686" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.EastWestRoad" target="dev.tylerdclark.traffic.Road">
+      <point x="-17.75" y="-15.0" />
+      <point x="232.18839342188494" y="280.0" />
+      <point x="152.93839342188494" y="280.0" />
+      <point x="35.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.TrafficLight" target="dev.tylerdclark.util.Timer">
+      <point x="35.5" y="-15.0" />
+      <point x="301.7745203457728" y="60.0" />
+      <point x="386.57433059245216" y="60.0" />
+      <point x="-39.150000000000006" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.util.Timer">
+      <point x="50.882352941176464" y="-15.0" />
+      <point x="331.1745756904914" y="530.0" />
+      <point x="416.65962471009925" y="530.0" />
+      <point x="416.65962471009925" y="100.0" />
+      <point x="421.37433059245217" y="100.0" />
+      <point x="-4.349999999999966" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.traffic.EastWestRoad">
+      <point x="10.176470588235304" y="-15.0" />
+      <point x="290.46869333755023" y="560.0" />
+      <point x="293.7745098039216" y="560.0" />
+      <point x="293.7745098039216" y="390.0" />
+      <point x="306.73839342188495" y="390.0" />
+      <point x="56.80000000000001" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.App" target="dev.tylerdclark.gui.MainFrame">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.TrafficLight" target="dev.tylerdclark.traffic.NorthSouthRoad">
+      <point x="-59.166666666666686" y="-15.0" />
+      <point x="207.10785367910614" y="100.0" />
+      <point x="128.375" y="100.0" />
+      <point x="49.375" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.NorthSouthRoad" target="dev.tylerdclark.traffic.Car">
+      <point x="9.875" y="15.0" />
+      <point x="88.875" y="90.0" />
+      <point x="43.235360004216886" y="90.0" />
+      <point x="43.235360004216886" y="410.0" />
+      <point x="119.68839342188494" y="410.0" />
+      <point x="-27.0" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.EastWestRoad" target="dev.tylerdclark.traffic.Car">
+      <point x="-28.400000000000006" y="15.0" />
+      <point x="221.53839342188493" y="390.0" />
+      <point x="161.68839342188494" y="390.0" />
+      <point x="15.0" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.traffic.Road">
+      <point x="-40.70588235294116" y="-15.0" />
+      <point x="239.58634039637377" y="510.0" />
+      <point x="93.18839342188494" y="510.0" />
+      <point x="-25.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.InitialPanel" target="dev.tylerdclark.gui.MainFrame">
+      <point x="47.333333333333314" y="15.0" />
+      <point x="313.2922227493149" y="805.0" />
+      <point x="305.62555608264825" y="805.0" />
+      <point x="39.666666666666686" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Road" target="dev.tylerdclark.traffic.TrafficLight">
+      <point x="0.0" y="-15.0" />
+      <point x="117.93839342188494" y="190.0" />
+      <point x="204.14952034577283" y="190.0" />
+      <point x="-62.125" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Road" target="dev.tylerdclark.traffic.Car">
+      <point x="-15.0" y="15.0" />
+      <point x="102.93839342188494" y="300.0" />
+      <point x="110.93839342188494" y="300.0" />
+      <point x="110.93839342188494" y="400.0" />
+      <point x="125.68839342188494" y="400.0" />
+      <point x="-21.0" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.BackgroundCanvas" target="dev.tylerdclark.traffic.Car">
+      <point x="-30.529411764705856" y="-15.0" />
+      <point x="249.76281098460908" y="500.0" />
+      <point x="146.68839342188494" y="500.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.MainFrame" target="dev.tylerdclark.gui.InitialPanel">
+      <point x="-39.666666666666686" y="-15.0" />
+      <point x="226.29222274931487" y="805.0" />
+      <point x="218.62555608264825" y="805.0" />
+      <point x="-47.333333333333314" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.traffic.TrafficLight">
+      <point x="3.0" y="-15.0" />
+      <point x="149.68839342188494" y="370.0" />
+      <point x="168.43839342188494" y="370.0" />
+      <point x="168.43839342188494" y="210.0" />
+      <point x="239.64952034577283" y="210.0" />
+      <point x="-26.625" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.traffic.NorthSouthRoad">
+      <point x="-33.0" y="-15.0" />
+      <point x="113.68839342188494" y="420.0" />
+      <point x="37.235360004216886" y="420.0" />
+      <point x="37.235360004216886" y="80.0" />
+      <point x="69.125" y="80.0" />
+      <point x="-9.875" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.InitialPanel" target="dev.tylerdclark.gui.MenuPanel">
+      <point x="17.75" y="-15.0" />
+      <point x="283.70888941598156" y="725.0" />
+      <point x="286.08388941598156" y="725.0" />
+      <point x="-29.75" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.util.LightStatus">
+      <point x="21.0" y="-15.0" />
+      <point x="167.68839342188494" y="400.0" />
+      <point x="382.2697975964579" y="400.0" />
+      <point x="382.2697975964579" y="50.0" />
+      <point x="335.2745203457728" y="50.0" />
+      <point x="44.66666666666666" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.util.Timer" target="dev.tylerdclark.gui.BackgroundCanvas">
+      <point x="13.050000000000011" y="15.0" />
+      <point x="438.77433059245215" y="100.0" />
+      <point x="437.01256588656986" y="100.0" />
+      <point x="437.01256588656986" y="550.0" />
+      <point x="351.527516866962" y="550.0" />
+      <point x="71.23529411764707" y="-15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.MenuPanel" target="dev.tylerdclark.gui.BackgroundCanvas">
+      <point x="-29.75" y="-15.0" />
+      <point x="286.08388941598156" y="650.0" />
+      <point x="280.29222274931493" y="650.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.traffic.Road">
+      <point x="-3.0" y="-15.0" />
+      <point x="143.68839342188494" y="370.0" />
+      <point x="139.50239563567365" y="370.0" />
+      <point x="139.50239563567365" y="300.0" />
+      <point x="132.93839342188494" y="300.0" />
+      <point x="15.0" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.MenuPanel" target="dev.tylerdclark.util.Timer">
+      <point x="49.583333333333314" y="-15.0" />
+      <point x="365.4172227493149" y="650.0" />
+      <point x="466.88903647480515" y="650.0" />
+      <point x="466.88903647480515" y="100.0" />
+      <point x="464.87433059245217" y="100.0" />
+      <point x="39.150000000000034" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.traffic.EastWestRoad">
+      <point x="9.0" y="-15.0" />
+      <point x="155.68839342188494" y="380.0" />
+      <point x="193.13839342188493" y="380.0" />
+      <point x="-56.80000000000001" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.traffic.Car" target="dev.tylerdclark.util.Timer">
+      <point x="27.0" y="-15.0" />
+      <point x="173.68839342188494" y="410.0" />
+      <point x="392.27450980392155" y="410.0" />
+      <point x="392.27450980392155" y="80.0" />
+      <point x="403.97433059245213" y="80.0" />
+      <point x="-21.75" y="15.0" />
+    </edge>
+    <edge source="dev.tylerdclark.gui.MenuPanel" target="dev.tylerdclark.traffic.Car">
+      <point x="-49.583333333333314" y="-15.0" />
+      <point x="266.25055608264825" y="640.0" />
+      <point x="130.48045804343255" y="640.0" />
+      <point x="130.48045804343255" y="560.0" />
+      <point x="122.68839342188494" y="560.0" />
+      <point x="-24.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.5913145344108635" x="185.18999267157903" y="455.2858840495911" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
