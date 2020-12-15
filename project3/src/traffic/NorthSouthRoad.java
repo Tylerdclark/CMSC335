@@ -52,5 +52,4 @@ public class NorthSouthRoad extends Road{
             car.draw(graphics);
         }
     }
-
 }
