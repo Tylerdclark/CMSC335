@@ -7,9 +7,9 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package util;
+package dev.tylerdclark.util;
 
-import gui.BackgroundCanvas;
+import dev.tylerdclark.gui.BackgroundCanvas;
 
 import javax.swing.*;
 import java.util.List;

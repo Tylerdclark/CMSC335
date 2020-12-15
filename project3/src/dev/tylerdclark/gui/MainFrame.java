@@ -8,7 +8,7 @@
  * *****************************************************************************
  */
 
-package gui;
+package dev.tylerdclark.gui;
 
 import javax.swing.*;
 

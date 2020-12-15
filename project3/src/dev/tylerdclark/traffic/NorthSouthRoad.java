@@ -8,7 +8,7 @@
  * *****************************************************************************
  */
 
-package traffic;
+package dev.tylerdclark.traffic;
 
 import java.awt.*;
 import java.util.ArrayList;

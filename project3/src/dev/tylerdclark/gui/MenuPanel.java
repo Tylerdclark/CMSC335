@@ -7,13 +7,13 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package gui;
+package dev.tylerdclark.gui;
 
 import javax.swing.*;
 import java.awt.*;
 
-import traffic.Car;
-import util.Timer;
+import dev.tylerdclark.traffic.Car;
+import dev.tylerdclark.util.Timer;
 
 /**
  * This JPanel class allows the simulation to be started, paused, stopped and allow random cars to be added

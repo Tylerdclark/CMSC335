@@ -7,17 +7,17 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package traffic;
+package dev.tylerdclark.traffic;
 
-import util.LightStatus;
-import util.Timer;
+import dev.tylerdclark.util.LightStatus;
+import dev.tylerdclark.util.Timer;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
 /**
- * The traffic light class, which like cars and the timer runs in a background thread.
+ * The dev.clark.traffic light class, which like cars and the timer runs in a background thread.
  * todo: make setters and getters and give access modifiers
  */
 public class TrafficLight extends SwingWorker<Void, Void> {
@@ -34,7 +34,7 @@ public class TrafficLight extends SwingWorker<Void, Void> {
     Random random;
 
     /**
-     * constructor for traffic light objects.
+     * constructor for dev.clark.traffic light objects.
       * @param nsRoad the vertical road for this light
      * @param ewRoad the horizontal road for this light
      */

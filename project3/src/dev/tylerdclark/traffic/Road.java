@@ -7,7 +7,7 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package traffic;
+package dev.tylerdclark.traffic;
 
 import java.awt.*;
 import java.util.ArrayList;

@@ -8,10 +8,10 @@
  * *****************************************************************************
  */
 
-package gui;
+package dev.tylerdclark.gui;
 
-import traffic.*;
-import util.Timer;
+import dev.tylerdclark.traffic.*;
+import dev.tylerdclark.util.Timer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -116,7 +116,7 @@ public class BackgroundCanvas extends JPanel{
 
     /**
      * creates the roads and passes their draw values (which took a lot of head scratching to figure out) also creates
-     * the correct number of traffic lights and {@link #populateCars()}
+     * the correct number of dev.clark.traffic lights and {@link #populateCars()}
      */
     public void initialize() {
 

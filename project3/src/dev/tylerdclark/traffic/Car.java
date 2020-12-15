@@ -8,10 +8,10 @@
  * *****************************************************************************
  */
 
-package traffic;
+package dev.tylerdclark.traffic;
 
-import util.LightStatus;
-import util.Timer;
+import dev.tylerdclark.util.LightStatus;
+import dev.tylerdclark.util.Timer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +25,7 @@ public class Car extends SwingWorker<Void, Void> {
 
     private static int counter = 1;
     private Road road;
-    private util.Timer timer;
+    private dev.tylerdclark.util.Timer timer;
     private final Color color = new Color((int)(Math.random() * 0x1000000)); // Fun way to make random colors,
     private int x;                                                           // some can be hard to see tho..
     private int y;

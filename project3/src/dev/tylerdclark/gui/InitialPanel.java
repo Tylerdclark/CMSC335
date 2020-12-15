@@ -7,7 +7,7 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package gui;
+package dev.tylerdclark.gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +27,7 @@ public class InitialPanel extends JPanel{
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel info = new JLabel("Please select options for the traffic simulation");
+        JLabel info = new JLabel("Please select options for the dev.clark.traffic simulation");
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridy = 0;

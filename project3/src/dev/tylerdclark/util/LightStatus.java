@@ -7,7 +7,7 @@
  * DATE: 13 Dec 2020
  * *****************************************************************************
  */
-package util;
+package dev.tylerdclark.util;
 
 /**
  * Indispensable enum class to be used by TrafficLight class
