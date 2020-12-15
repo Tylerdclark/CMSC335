@@ -89,6 +89,7 @@ public class MenuPanel extends JPanel{
         addBtn.addActionListener(event -> {
             Car car = this.backgroundCanvas.addRandomCar();
             car.passTimer(timer);
+            this.backgroundCanvas.executorService.submit(car);
             this.backgroundCanvas.repaint();
         });
 
