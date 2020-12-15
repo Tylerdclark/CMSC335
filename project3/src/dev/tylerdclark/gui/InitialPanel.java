@@ -13,7 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This JPanel allows options to be selected for the simulation. I'm not good at gridbaglayout yet.. don't judge!
+ * This JPanel allows options to be selected for the simulation. I'm not good at gridbaglayout yet..
  */
 public class InitialPanel extends JPanel{
 
@@ -27,7 +27,7 @@ public class InitialPanel extends JPanel{
         this.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
 
-        JLabel info = new JLabel("Please select options for the dev.clark.traffic simulation");
+        JLabel info = new JLabel("Please select options for the traffic simulation");
         gbc.gridwidth = 2;
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.gridy = 0;
