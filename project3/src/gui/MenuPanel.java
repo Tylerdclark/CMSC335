@@ -47,7 +47,8 @@ public class MenuPanel extends JPanel{
         startBtn.addActionListener(event -> {
             if (timer == null || timer.isStop()){
                 timer = new Timer(this.timerLbl, this.backgroundCanvas);
-                timer.execute();
+                //timer.execute(); //without executor
+                this.backgroundCanvas.executorService.submit(timer);
                 this.backgroundCanvas.passTimer(timer);
                 this.backgroundCanvas.executeWorkers();
             } else {
@@ -78,7 +79,7 @@ public class MenuPanel extends JPanel{
             revalidate();
             repaint();
         });
-        /* todo: As it stands, adding a random car while the sim is stopped does not work */
+
         JButton addBtn = new JButton("Add a car");
         gbc = new GridBagConstraints();
         gbc.gridx = 3;
@@ -88,10 +89,7 @@ public class MenuPanel extends JPanel{
         addBtn.addActionListener(event -> {
             Car car = this.backgroundCanvas.addRandomCar();
             car.passTimer(timer);
-//            if (!timer.isPause() || !timer.isStop()){
-//                car.execute();
-//            }
-            car.execute(); //this causes the swingworker to finish right away (if stopped)
+            this.backgroundCanvas.repaint();
         });
 
         timerLbl = new JTextField(4);
